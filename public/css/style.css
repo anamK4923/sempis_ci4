@@ -2,7 +2,7 @@
 :root {
     --primary: #EB1616;
     --secondary: #191C24;
-    --light: #6C7293;
+    --light: #ffff;
     --dark: #000000;
     /* --biru: #0099ff; */
 }
@@ -296,4 +296,8 @@
     justify-content: space-between;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.form-control {
+    color: #d8c0c0;
 }

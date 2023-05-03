@@ -1,7 +1,7 @@
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('sidebar'); ?>
-<a href="/" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+<a href="/" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
 <!-- <div class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -11,7 +11,7 @@
                         </div>
                     </div> -->
 <a href="/" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Guru</a>
-<a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
+<a href="/siswa" class="nav-item nav-link active"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
 <a href="/" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
 <a href="/" class="nav-item nav-link"><i class="fa-solid fa-landmark me-2"></i>Data Kelas</a>
@@ -32,18 +32,20 @@
 <?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
-<div class="container-fluid pt-4 px-4 d-flex justify-content-center">
-    <div class="col-sm-12 col-xl-10">
+<div class="container-fluid pt-2 px-4 d-flex justify-content-center">
+    <div class="col-sm-12 col-xl-9">
         <div class="bg-secondary rounded h-100 p-4">
             <h6 class="mb-4">Tambah Siswa</h6>
             <form action="/siswa/simpan" method="post">
-                <?= csrf_field(); ?>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nis" placeholder="nis" name="nis" autofocus>
+                    <input type="text" class="form-control <?= ($validation->hasError('nis')) ? 'is-invalid' : ''; ?>" id="nis" placeholder="nis" name="nis" value="<?= old('nis'); ?>">
                     <label for="floatingInput">NIS</label>
+                    <div id="validationServer03Feedback" class="invalid-feedback">
+                        Please provide a valid city.
+                    </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nama_siswa" placeholder="name@example.com" name="nama_siswa">
+                    <input type="text" class="form-control<?= ($validation->hasError('nama_siswa')) ? 'is-invalid' : ''; ?>" id="nama_siswa" placeholder="name@example.com" name="nama_siswa">
                     <label for="floatingInput">Nama Siswa</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -65,7 +67,10 @@
                     <input type="text" class="form-control" id="tahun_masuk" placeholder="tahun masuk" name="tahun_masuk">
                     <label for="floatingInput">Tahun Masuk</label>
                 </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
+                <div class="button d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <a class="btn btn-danger" href="/siswa">Cancel</a>
+                </div>
             </form>
         </div>
     </div>
