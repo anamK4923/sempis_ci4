@@ -11,8 +11,8 @@
                         </div>
                     </div> -->
 <a href="/" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Guru</a>
-<a href="/siswa" class="nav-item nav-link active"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
-<a href="/" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
+<a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
+<a href="/" class="nav-item nav-link active"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
 <a href="/" class="nav-item nav-link"><i class="fa-solid fa-landmark me-2"></i>Data Kelas</a>
 <a href="/" class="nav-item nav-link"><i class="fa-solid fa-book-open me-2"></i>Data Mapel</a>
@@ -52,13 +52,14 @@
                         <th scope="col">Kode Kelas</th>
                         <th scope="col">Kode Mapel</th>
                         <th scope="col">nip</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($jadwal as $j) : ?>
                         <tr>
-                            <th scope="row"><?= $j['hari']; ?></th>
-                            <td><?= $j['kode_kelas']; ?></td>
+                            <th scope="row"><?= $j['tanggal']; ?></th>
+                            <td><?= $j['kode_ruang']; ?></td>
                             <td><?= $j['kode_mapel']; ?></td>
                             <td><?= $j['nip']; ?></td>
                             <td>

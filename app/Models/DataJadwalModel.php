@@ -6,11 +6,11 @@ use CodeIgniter\Model;
 
 class DataJadwalModel extends Model
 {
-    protected $table = 'data_jadwal';
+    protected $table = 'jadwal';
     // protected $useTimestamps = true;
     protected $allowedFields = ['hari', 'kode_kelas', 'kode_mapel', 'nip'];
 
-    public function getSiswa($hari = false)
+    public function getJadwal($hari = false)
     {
         if ($hari == false) {
             return $this->findAll();

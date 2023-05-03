@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\DataSiswaModel;
+use App\Models\DataJadwalModel;
 
 class DataJadwal extends BaseController
 {
@@ -16,7 +16,7 @@ class DataJadwal extends BaseController
     {
         $data = [
             'title' => 'Data Jadwal',
-            'siswa' => $this->dataJadwalModel->getJadwal()
+            'jadwal' => $this->dataJadwalModel->getJadwal()
         ];
 
         return view('dataJadwal/index', $data);
