@@ -31,8 +31,10 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/siswa', 'DataSiswa::index');
+$routes->get('/guru', 'DataGuru::index');
 // $routes->get('/siswa/tambah', 'DataSiswa::tambah');
 $routes->match(['get', 'post'], '/siswa/(:segment)', 'DataSiswa::$1');
+$routes->match(['get', 'post'], '/guru/(:segment)', 'DataGuru::$1');
 // $routes->get('/siswa/(:segment)', 'DataSiswa::$1');
 // $routes->post('/siswa/simpan', 'DataSiswa::simpan');
 
