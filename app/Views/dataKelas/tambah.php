@@ -33,30 +33,26 @@
 
 <?= $this->section('content'); ?>
 <div class="container-fluid pt-4 px-4 d-flex justify-content-center">
-    <div class="col-sm-12 col-xl-10">
-        <div class="bg-secondary rounded h-100 p-4">
-            <h6 class="mb-4">Tambah Jadwal</h6>
-            <form action="/siswa/simpan" method="post">
-                <?= csrf_field(); ?>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="hari" placeholder="hari" name="Hari" autofocus>
-                    <label for="floatingInput">Hari</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="kode_kelas" placeholder="Kode Kelas" name="kode_kelas">
-                    <label for="floatingInput">Kode Kelas</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="kode_mapel" placeholder="Kode Mata Pelajaran" name="kode_mapel">
-                    <label for="floatingPassword">Kode Mapel</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nip" placeholder="NIP" name="nip">
-                    <label for="floatingInput">NIP</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Tambah</button>
-            </form>
+  <div class="col-sm-12 col-xl-10">
+    <div class="bg-secondary rounded h-100 p-4">
+      <h6 class="mb-4">Tambah Kelas</h6>
+      <form action="/siswa/simpan" method="post">
+        <?= csrf_field(); ?>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="kode_ruang" placeholder="Kode Ruang" name="Kode_Ruang" autofocus>
+          <label for="floatingInput">Kode Ruang</label>
         </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="nama_ruang" placeholder="Nama Ruang" name="nama_ruang">
+          <label for="floatingInput">Nama Ruang</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="jenis_ruang" placeholder="Jenis Ruang" name="jenis_ruang">
+          <label for="floatingInput">Jenis Ruang</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Tambah</button>
+      </form>
     </div>
+  </div>
 </div>
 <?= $this->endSection(); ?>

@@ -33,10 +33,12 @@ $routes->get('/', 'Home::index');
 $routes->get('/siswa', 'DataSiswa::index');
 $routes->get('/guru', 'DataGuru::index');
 $routes->get('/jadwal', 'DataJadwal::index');
+$routes->get('/kelas', 'DataKelas::index');
 // $routes->get('/siswa/tambah', 'DataSiswa::tambah');
 $routes->match(['get', 'post'], '/siswa/(:segment)', 'DataSiswa::$1');
 $routes->match(['get', 'post'], '/guru/(:segment)', 'DataGuru::$1');
 $routes->match(['get', 'post'], '/jadwal/(:segment)', 'DataJadwal::$1');
+$routes->match(['get', 'post'], '/kelas/(:segment)', 'DataKelas::$1');
 // $routes->get('/siswa/(:segment)', 'DataSiswa::$1');
 // $routes->post('/siswa/simpan', 'DataSiswa::simpan');
 
