@@ -33,41 +33,41 @@
 
 <?= $this->section('content'); ?>
 <div class="container-fluid pt-4 px-4">
-              <div class="col-12">
-                            <div class="bg-secondary rounded h-100 p-4">
-                                          <div class="headerTable mb-2">
-                                                        <h5>Tabel Data Poin</h5>
-                                                        <div class="headerHelp d-flex align-items-center flex-row gap-2">
-                                                                      <form class="d-none d-md-flex ms-4">
-                                                                                    <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-                                                                                    <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-                                                                      </form>
-                                                                      <h5><a class="btn btn-sm btn-info mt-1" href="/poin/tambah">Tambah</a></h5>
-                                                        </div>
-                                          </div>
-                                          <table class="table table-bordered table-hover">
-                                                        <thead>
-                                                                      <tr>
-                                                                                    <th scope="col">NIS</th>
-                                                                                    <th scope="col">Poin</th>
+    <div class="col-12">
+        <div class="bg-secondary rounded h-100 p-4">
+            <div class="headerTable mb-2">
+                <h5>Tabel Data Poin</h5>
+                <div class="headerHelp d-flex align-items-center flex-row gap-2">
+                    <form class="d-none d-md-flex ms-4">
+                        <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
+                        <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
+                    </form>
+                    <h5><a class="btn btn-sm btn-info mt-1" href="/poin/tambah">Tambah</a></h5>
+                </div>
+            </div>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">NIS</th>
+                        <th scope="col">Poin</th>
 
-                                                                      </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                                      <?php foreach ($poin as $p) : ?>
-                                                                                    <tr>
-                                                                                                  <th scope="row"><?= $p['nis']; ?></th>
-                                                                                                  <td><?= $p['poin']; ?></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($poin as $p) : ?>
+                        <tr>
+                            <th scope="row"><?= $p['nis']; ?></th>
+                            <td><?= $p['poin']; ?></td>
 
-                                                                                                  <td>
-                                                                                                                <a class="btn btn-sm btn-success" href="">Edit</a>
-                                                                                                                <a class="btn btn-sm btn-primary" href="">Hapus</a>
-                                                                                                  </td>
-                                                                                    </tr>
-                                                                      <?php endforeach; ?>
-                                                        </tbody>
-                                          </table>
-                            </div>
-              </div>
+                            <td>
+                                <a class="btn btn-sm btn-success" href="">Edit</a>
+                                <a class="btn btn-sm btn-primary" href="">Hapus</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 <?= $this->endSection(); ?>
