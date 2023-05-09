@@ -7,15 +7,16 @@ use CodeIgniter\Model;
 class DataJadwalModel extends Model
 {
     protected $table = 'jadwal';
+    protected $primarykey = 'id';
     // protected $useTimestamps = true;
-    protected $allowedFields = ['hari', 'kode_kelas', 'kode_mapel', 'nip'];
+    protected $allowedFields = ['id', 'hari', 'kode_kelas', 'kode_mapel', 'nip'];
 
-    public function getJadwal($hari = false)
+    public function getJadwal($id = false)
     {
-        if ($hari == false) {
+        if ($id == false) {
             return $this->findAll();
         }
 
-        return $this->where(['hari' => $hari])->first();
+        return $this->where(['id' => $id])->first();
     }
 }
