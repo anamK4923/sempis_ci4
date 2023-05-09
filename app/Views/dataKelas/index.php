@@ -1,7 +1,7 @@
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('sidebar'); ?>
-<a href="/" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+<a href="/" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
 <!-- <div class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -10,11 +10,11 @@
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div> -->
-<a href="/" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Guru</a>
+<a href="/guru" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Guru</a>
 <a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
-<a href="/" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
+<a href="/jadwal" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
-<a href="/" class="nav-item nav-link"><i class="fa-solid fa-landmark me-2"></i>Data Kelas</a>
+<a href="/kelas" class="nav-item nav-link active"><i class="fa-solid fa-landmark me-2"></i>Data Kelas</a>
 <a href="/" class="nav-item nav-link"><i class="fa-solid fa-book-open me-2"></i>Data Mapel</a>
 <a href="/" class="nav-item nav-link"><i class="fa-solid fa-circle-user me-2"></i>Data Users</a>
 <!-- <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
@@ -32,31 +32,42 @@
 <?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
-<div class="container-fluid pt-4 px-4 d-flex justify-content-center">
-    <div class="col-sm-12 col-xl-10">
-        <div class="bg-secondary rounded h-100 p-4">
-            <h6 class="mb-4">Tambah Jadwal</h6>
-            <form action="/siswa/simpan" method="post">
-                <?= csrf_field(); ?>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="hari" placeholder="hari" name="Hari" autofocus>
-                    <label for="floatingInput">Hari</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="kode_kelas" placeholder="Kode Kelas" name="kode_kelas">
-                    <label for="floatingInput">Kode Kelas</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="kode_mapel" placeholder="Kode Mata Pelajaran" name="kode_mapel">
-                    <label for="floatingPassword">Kode Mapel</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nip" placeholder="NIP" name="nip">
-                    <label for="floatingInput">NIP</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Tambah</button>
-            </form>
+<div class="container-fluid pt-4 px-4">
+  <div class="col-12">
+    <div class="bg-secondary rounded h-100 p-4">
+      <div class="headerTable mb-2">
+        <h5>Tabel Data Kelas</h5>
+        <div class="headerHelp d-flex align-items-center flex-row gap-2">
+          <form class="d-none d-md-flex ms-4">
+            <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
+            <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
+          </form>
+          <h5><a class="btn btn-sm btn-info mt-1" href="/kelas/tambah">Tambah</a></h5>
         </div>
+      </div>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Kode Ruang</th>
+            <th scope="col">Nama Ruang</th>
+            <th scope="col">Jenis Ruang</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($kelas as $k) : ?>
+            <tr>
+              <th scope="row"><?= $k['kode_ruang']; ?></th>
+              <td><?= $k['nama_ruang']; ?></td>
+              <td><?= $k['jenis_ruang']; ?></td>
+              <td>
+                <a class="btn btn-sm btn-success" href="">Edit</a>
+                <a class="btn btn-sm btn-primary" href="">Hapus</a>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
 <?= $this->endSection(); ?>

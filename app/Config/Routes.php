@@ -33,15 +33,23 @@ $routes->get('/', 'Home::index');
 $routes->get('/siswa', 'DataSiswa::index');
 $routes->get('/guru', 'DataGuru::index');
 $routes->get('/jadwal', 'DataJadwal::index');
+<<<<<<< HEAD
+$routes->get('/kelas', 'DataKelas::index');
+=======
 $routes->get('/poin', 'DataPoin::index');
 $routes->get('/mapel', 'DataMapel::index');
 
+>>>>>>> 6a39e1ec34836b804b9734762195ee580693ff24
 // $routes->get('/siswa/tambah', 'DataSiswa::tambah');
 $routes->match(['get', 'post'], '/siswa/(:segment)', 'DataSiswa::$1');
 $routes->match(['get', 'post'], '/guru/(:segment)', 'DataGuru::$1');
 $routes->match(['get', 'post'], '/jadwal/(:segment)', 'DataJadwal::$1');
+<<<<<<< HEAD
+$routes->match(['get', 'post'], '/kelas/(:segment)', 'DataKelas::$1');
+=======
 $routes->match(['get', 'post'], '/poin/(:segment)', 'DataPoin::$1');
 $routes->match(['get', 'post'], '/mapel/(:segment)', 'DataMapel::$1');
+>>>>>>> 6a39e1ec34836b804b9734762195ee580693ff24
 // $routes->get('/siswa/(:segment)', 'DataSiswa::$1');
 // $routes->post('/siswa/simpan', 'DataSiswa::simpan');
 
