@@ -68,7 +68,7 @@
                             <td><?= $s['tahun_masuk']; ?></td>
                             <td>
                                 <a class="btn btn-sm btn-success" href="">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="/siswa/hapus">Hapus</a>
+                                <a class="btn btn-sm btn-primary" href="/siswa/hapus/<?= $s['nis']; ?>">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
