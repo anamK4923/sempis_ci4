@@ -50,7 +50,8 @@ $routes->match(['get', 'post'], '/users/(:any)', 'DataUsers::$1');
 // $routes->post('/siswa/simpan', 'DataSiswa::simpan');
 
 //Routes Method Hapus
-$routes->delete('/siswa/(:any)', 'DataUsers::hapus/$1');
+$routes->delete('/siswa/(:any)', 'DataSiswa::hapus/$1');
+$routes->delete('/users/(:any)', 'DataUsers::hapus/$1');
 
 
 /*

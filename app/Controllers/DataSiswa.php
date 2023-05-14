@@ -66,7 +66,7 @@ class DataSiswa extends BaseController
 
     public function hapus($nis)
     {
-        // dd($id);
+        dd($nis);
         $this->dataSiswaModel->where('nis', $nis)->delete();
 
         return redirect()->to('/siswa');

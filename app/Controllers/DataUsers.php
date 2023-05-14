@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\DataUsersModel;
 use Config\Services;
+use PhpParser\Node\Expr\FuncCall;
 use PSpell\Config;
 
 class DataUsers extends BaseController
@@ -24,50 +25,19 @@ class DataUsers extends BaseController
         return view('dataUsers/index', $data);
     }
 
-    public function tambah()
+    public function register()
     {
         $data = [
-            'title' => 'Tambah User',
-            'validation' => \Config\Services::validation()
+            'title' => 'Registrasi'
         ];
-
-        return view('dataUsers/tambah', $data);
+        return view('dataUsers/register', $data);
     }
 
-    public function simpan()
+    public function hapus($id)
     {
-        if (!$this->validate([
-            'nis'           => 'required|is_unique[data_siswa.nis]',
-            'nama_siswa'    => 'required',
-            'tgl_lahir'     => 'required',
-            'jns_kelamin'   => 'required',
-            'alamat'        => 'required',
-            'tahun_masuk'   => 'required'
-        ])) {
-            $validation = \Config\Services::validation();
+        // dd($id);
+        $this->dataUsersModel->where('id', $id)->delete();
 
-            // dd($validation);
-
-            return redirect()->to('/siswa/tambah')->withInput();
-        }
-
-
-        $this->dataUsersModel->save([
-            'nis'           => $this->request->getVar('nis'),
-            'nama_siswa'    => $this->request->getVar('nama_siswa'),
-            'tgl_lahir'     => $this->request->getVar('tgl_lahir'),
-            'jns_kelamin'   => $this->request->getVar('jns_kelamin'),
-            'alamat'        => $this->request->getVar('alamat'),
-            'tahun_masuk'   => $this->request->getVar('tahun_masuk')
-        ]);
-
-        return redirect()->to('/siswa');
-    }
-
-    public function hapus()
-    {
-        $this->dataUsersModel->delete($id = 'nis');
-
-        return redirect()->to('/siswa');
+        return redirect()->to('/users');
     }
 }

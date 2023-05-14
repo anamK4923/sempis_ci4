@@ -14,8 +14,8 @@
 <a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
 <a href="/jadwal" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/poin" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
-<a href="/mapel" class="nav-item nav-link"><i class="fa-solid fa-book-open me-2"></i>Data Mapel</a>
 <a href="/kelas" class="nav-item nav-link"><i class="fa-solid fa-landmark me-2"></i>Data Kelas</a>
+<a href="/mapel" class="nav-item nav-link"><i class="fa-solid fa-book-open me-2"></i>Data Mapel</a>
 <a href="/users" class="nav-item nav-link active"><i class="fa-solid fa-circle-user me-2"></i>Data Users</a>
 <!-- <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
@@ -32,48 +32,46 @@
 <?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
-<div class="container-fluid pt-4 px-4">
-    <div class="col-12">
+<div class="container-fluid pt-4 px-4 d-flex justify-content-center">
+    <div class="col-sm-12 col-xl-10">
         <div class="bg-secondary rounded h-100 p-4">
-            <div class="headerTable mb-2">
-                <h5>Tabel Data User</h5>
-                <div class="headerHelp d-flex align-items-center flex-row gap-2">
-                    <form class="d-none d-md-flex ms-4">
-                        <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-                        <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-                    </form>
-                    <h5><a class="btn btn-sm btn-info mt-1" href="/users/register">Tambah</a></h5>
+
+            <h6 class="mb-4">Tambah User</h6>
+
+            <?= view('Myth\Auth\Views\_message_block') ?>
+
+            <form action="<?= url_to('register') ?>" method="post">
+
+                <?php csrf_field() ?>
+
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" name="email" aria-describedby="emailHelp" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>">
+                    <label for="floatingInput"><?= lang('Auth.email') ?></label>
+                    <small id="emailHelp" class="form-text text-muted"><?= lang('Auth.weNeverShare') ?></small>
                 </div>
-            </div>
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">E-Mail</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Dibuat Tanggal</th>
-                        <th scope="col">Diperbarui Tanggal</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $no = 0 ?>
-                    <?php foreach ($users as $s) : ?>
-                        <tr>
-                            <?php $no++ ?>
-                            <th scope="row"><?= $no; ?></th>
-                            <td><?= $s['email']; ?></td>
-                            <td><?= $s['username']; ?></td>
-                            <td><?= $s['created_at']; ?></td>
-                            <td><?= $s['updated_at']; ?></td>
-                            <td>
-                                <a class="btn btn-sm btn-primary" href="/users/hapus/<?= $s['id']; ?>">Hapus</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control <?php if (session('errors.username')) : ?>is-invalid<?php endif ?>" name="username" placeholder="<?= lang('Auth.username') ?>" value="<?= old('username') ?>">
+                    <label for="floatingInput"><?= lang('Auth.username') ?></label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="password" name="password" class="form-control <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.password') ?>" autocomplete="off">
+                    <label for="floatingInput"><?= lang('Auth.password') ?></label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="password" name="pass_confirm" class="form-control <?php if (session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.repeatPassword') ?>" autocomplete="off">
+                    <label for="floatingInput"><?= lang('Auth.repeatPassword') ?></label>
+                </div>
+
+                <div class="button d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.register') ?></button>
+                    <a class="btn btn-danger" href="/users">Cancel</a>
+                </div>
+
+            </form>
         </div>
     </div>
 </div>
-<?= $this->endSection(); ?>
+<?= $this->endsection(); ?>
