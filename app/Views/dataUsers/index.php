@@ -11,12 +11,12 @@
                         </div>
                     </div> -->
 <a href="/guru" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Guru</a>
-<a href="/siswa" class="nav-item nav-link active"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
+<a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
 <a href="/jadwal" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
 <a href="/" class="nav-item nav-link"><i class="fa-solid fa-landmark me-2"></i>Data Kelas</a>
 <a href="/" class="nav-item nav-link"><i class="fa-solid fa-book-open me-2"></i>Data Mapel</a>
-<a href="/" class="nav-item nav-link"><i class="fa-solid fa-circle-user me-2"></i>Data Users</a>
+<a href="/" class="nav-item nav-link active"><i class="fa-solid fa-circle-user me-2"></i>Data Users</a>
 <!-- <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> -->
@@ -36,36 +36,37 @@
     <div class="col-12">
         <div class="bg-secondary rounded h-100 p-4">
             <div class="headerTable mb-2">
-                <h5>Tabel Data Siswa</h5>
+                <h5>Tabel Data User</h5>
                 <div class="headerHelp d-flex align-items-center flex-row gap-2">
                     <form class="d-none d-md-flex ms-4">
                         <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
                         <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
                     </form>
-                    <h5><a class="btn btn-sm btn-info mt-1" href="/siswa/tambah">Tambah</a></h5>
+                    <h5><a class="btn btn-sm btn-info mt-1" href="<?= url_to('register') ?>">Tambah</a></h5>
+                    <!-- <p><a href="<?= url_to('register') ?>"><?= lang('Auth.needAnAccount') ?></a></p> -->
                 </div>
             </div>
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">NIM</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Tanggal Lahir</th>
-                        <th scope="col">Jenis Kelamin</th>
-                        <th scope="col">Alamat</th>
-                        <th scope="col">Tahun Masuk</th>
+                        <th scope="col">No</th>
+                        <th scope="col">E-Mail</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Dibuat Tanggal</th>
+                        <th scope="col">Diperbarui Tanggal</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($siswa as $s) : ?>
+                    <?php $no = 0 ?>
+                    <?php foreach ($users as $s) : ?>
                         <tr>
-                            <th scope="row"><?= $s['nis']; ?></th>
-                            <td><?= $s['nama_siswa']; ?></td>
-                            <td><?= $s['tgl_lahir']; ?></td>
-                            <td><?= $s['jns_kelamin']; ?></td>
-                            <td><?= $s['alamat']; ?></td>
-                            <td><?= $s['tahun_masuk']; ?></td>
+                            <?php $no++ ?>
+                            <th scope="row"><?= $no; ?></th>
+                            <td><?= $s['email']; ?></td>
+                            <td><?= $s['username']; ?></td>
+                            <td><?= $s['created_at']; ?></td>
+                            <td><?= $s['updated_at']; ?></td>
                             <td>
                                 <a class="btn btn-sm btn-success" href="">Edit</a>
                                 <a class="btn btn-sm btn-primary" href="/siswa/hapus">Hapus</a>

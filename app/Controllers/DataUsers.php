@@ -2,36 +2,36 @@
 
 namespace App\Controllers;
 
-use App\Models\DataSiswaModel;
+use App\Models\DataUsersModel;
 use Config\Services;
 use PSpell\Config;
 
-class DataSiswa extends BaseController
+class DataUsers extends BaseController
 {
-    protected $dataSiswaModel;
+    protected $dataUsersModel;
     public function __construct()
     {
-        $this->dataSiswaModel = new DataSiswaModel();
+        $this->dataUsersModel = new DataUsersModel();
     }
 
     public function index()
     {
         $data = [
-            'title' => 'Data Siswa',
-            'siswa' => $this->dataSiswaModel->getSiswa()
+            'title' => 'Data User',
+            'users' => $this->dataUsersModel->getUsers()
         ];
 
-        return view('dataSiswa/index', $data);
+        return view('dataUsers/index', $data);
     }
 
     public function tambah()
     {
         $data = [
-            'title' => 'Tambah Siswa',
+            'title' => 'Tambah User',
             'validation' => \Config\Services::validation()
         ];
 
-        return view('dataSiswa/tambah', $data);
+        return view('dataUsers/tambah', $data);
     }
 
     public function simpan()
@@ -52,7 +52,7 @@ class DataSiswa extends BaseController
         }
 
 
-        $this->dataSiswaModel->save([
+        $this->dataUsersModel->save([
             'nis'           => $this->request->getVar('nis'),
             'nama_siswa'    => $this->request->getVar('nama_siswa'),
             'tgl_lahir'     => $this->request->getVar('tgl_lahir'),
@@ -64,10 +64,9 @@ class DataSiswa extends BaseController
         return redirect()->to('/siswa');
     }
 
-    public function hapus($nis)
+    public function hapus()
     {
-        // dd($id);
-        $this->dataSiswaModel->where('nis', $nis)->delete();
+        $this->dataUsersModel->delete($id = 'nis');
 
         return redirect()->to('/siswa');
     }
