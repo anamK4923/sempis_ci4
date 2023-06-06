@@ -42,7 +42,7 @@
                         <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
                         <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
                     </form>
-                    <h5><a class="btn btn-sm btn-info mt-1" href="/siswa/tambah">Tambah</a></h5>
+                    <h5><a class="btn btn-sm btn-info mt-1" href="/mapel/tambah">Tambah</a></h5>
                 </div>
             </div>
             <table class="table table-bordered table-hover">
@@ -61,7 +61,7 @@
 
                             <td>
                                 <a class="btn btn-sm btn-success" href="">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="/siswa/hapus">Hapus</a>
+                                <a class="btn btn-sm btn-primary" href="/mapel/hapus/<?= $m['kode_mapel']; ?>">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

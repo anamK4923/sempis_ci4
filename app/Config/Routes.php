@@ -38,6 +38,7 @@ $routes->get('/poin', 'DataPoin::index');
 $routes->get('/mapel', 'DataMapel::index');
 $routes->get('/users', 'DataUsers::index');
 
+// Routes Tambah Data
 // $routes->get('/siswa/tambah', 'DataSiswa::tambah');
 $routes->match(['get', 'post'], '/siswa/(:any)', 'DataSiswa::$1');
 $routes->match(['get', 'post'], '/guru/(:any)', 'DataGuru::$1');
@@ -48,6 +49,10 @@ $routes->match(['get', 'post'], '/mapel/(:any)', 'DataMapel::$1');
 $routes->match(['get', 'post'], '/users/(:any)', 'DataUsers::$1');
 // $routes->get('/siswa/(:segment)', 'DataSiswa::$1');
 // $routes->post('/siswa/simpan', 'DataSiswa::simpan');
+
+
+//Routes Edit Data
+
 
 //Routes Method Hapus
 $routes->delete('/siswa/(:any)', 'DataSiswa::hapus/$1');

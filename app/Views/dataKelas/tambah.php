@@ -1,7 +1,7 @@
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('sidebar'); ?>
-<a href="/" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+<a href="/" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
 <!-- <div class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -32,25 +32,33 @@
 <?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
-<div class="container-fluid pt-4 px-4 d-flex justify-content-center">
-  <div class="col-sm-12 col-xl-10">
+<div class="container-fluid pt-2 px-4 d-flex justify-content-center">
+  <div class="col-sm-12 col-xl-9">
     <div class="bg-secondary rounded h-100 p-4">
       <h6 class="mb-4">Tambah Kelas</h6>
-      <form action="/siswa/simpan" method="post">
-        <?= csrf_field(); ?>
+      <form action="/kelas/simpan" method="post">
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="kode_ruang" placeholder="Kode Ruang" name="Kode_Ruang" autofocus>
+          <input type="text" class="form-control <?= ($validation->hasError('kode_ruang')) ? 'is-invalid' : ''; ?>" id="kode_ruang" placeholder="Kode Ruang" name="kode_ruang" value="<?= old('kode_ruang'); ?>">
           <label for="floatingInput">Kode Ruang</label>
+          <div id="validationServer03Feedback" class="invalid-feedback">
+            Please provide a valid city.
+          </div>
         </div>
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="nama_ruang" placeholder="Nama Ruang" name="nama_ruang">
+          <input type="text" class="form-control<?= ($validation->hasError('nama_ruang')) ? 'is-invalid' : ''; ?>" id="nama_ruang" placeholder="Nama Ruang" name="nama_ruang">
           <label for="floatingInput">Nama Ruang</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="jenis_ruang" placeholder="Jenis Ruang" name="jenis_ruang">
-          <label for="floatingInput">Jenis Ruang</label>
+          <select class="form-select" id="jenis_ruang" aria-label="Floating label select example" name="jenis_ruang">
+            <option selected value="Teori">Teori</option>
+            <option value="Lab">Lab</option>
+          </select>
+          <label for="floatingSelect">Jenis Ruang</label>
         </div>
-        <button type="submit" class="btn btn-primary">Tambah</button>
+        <div class="button d-flex justify-content-between">
+          <button type="submit" class="btn btn-primary">Tambah</button>
+          <a class="btn btn-danger" href="/kelas">Cancel</a>
+        </div>
       </form>
     </div>
   </div>

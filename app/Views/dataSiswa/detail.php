@@ -32,49 +32,39 @@
 <?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
-<div class="container-fluid pt-4 px-4">
-    <div class="col-12">
+<div class="container-fluid pt-2 px-4 d-flex justify-content-center">
+    <div class="col-sm-12 col-xl-9">
         <div class="bg-secondary rounded h-100 p-4">
-            <div class="headerTable mb-2">
-                <h5>Tabel Data Siswa</h5>
-                <div class="headerHelp d-flex align-items-center flex-row gap-2">
-                    <form class="d-none d-md-flex ms-4">
-                        <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-                        <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-                    </form>
-                    <h5><a class="btn btn-sm btn-info mt-1" href="/siswa/tambah">Tambah</a></h5>
+            <h6 class="mb-4">Detail Siswa</h6>
+
+            <form action="/siswa/update/<?= $siswa['id']; ?>" method="post">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control<?= ($validation->hasError('nama_siswa')) ? 'is-invalid' : ''; ?>" id="nama_siswa" placeholder="name@example.com" name="nama_siswa" value="<?= $siswa['nama_siswa']; ?>">
+                    <label for="floatingInput">Nama Siswa</label>
                 </div>
-            </div>
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">NIM</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Tanggal Lahir</th>
-                        <th scope="col">Jenis Kelamin</th>
-                        <th scope="col">Alamat</th>
-                        <th scope="col">Tahun Masuk</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($siswa as $s) : ?>
-                        <tr>
-                            <th scope="row"><?= $s['nis']; ?></th>
-                            <td><?= $s['nama_siswa']; ?></td>
-                            <td><?= $s['tgl_lahir']; ?></td>
-                            <td><?= $s['jns_kelamin']; ?></td>
-                            <td><?= $s['alamat']; ?></td>
-                            <td><?= $s['tahun_masuk']; ?></td>
-                            <td>
-                                <a class="btn btn-sm btn-warning" href="/siswa/detail/<?= $s['nis']; ?>">Detail</a>
-                                <a class="btn btn-sm btn-success" href="/siswa/edit/<?= $s['nis']; ?>">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="/siswa/hapus/<?= $s['nis']; ?>">Hapus</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="tgl_lahir" placeholder="tgl" name="tgl_lahir" value="<?= $siswa['tgl_lahir']; ?>">
+                    <label for="floatingPassword">Tanggal Lahir</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="jns_kelamin" aria-label="Floating label select example" name="jns_kelamin">
+                        <option selected value="Laki-laki">Laki-Laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
+                    <label for="floatingSelect">Jenis Kelamin</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="alamat" placeholder="alamat" name="alamat" value="<?= $siswa['alamat']; ?>">
+                    <label for="floatingInput">Alamat</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="tahun_masuk" placeholder="tahun masuk" name="tahun_masuk" value="<?= $siswa['tahun_masuk']; ?>">
+                    <label for="floatingInput">Tahun Masuk</label>
+                </div>
+                <div class="button d-flex justify-content-between">
+                    <a class="btn btn-danger" href="/siswa">Keluar</a>
+                </div>
+            </form>
         </div>
     </div>
 </div>

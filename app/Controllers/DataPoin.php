@@ -25,7 +25,8 @@ class DataPoin extends BaseController
     public function tambah()
     {
         $data = [
-            'title' => 'Tambah Poin'
+            'title' => 'Tambah Poin',
+            'validation' => \Config\Services::validation()
         ];
 
         return view('dataPoin/tambah', $data);
@@ -34,7 +35,7 @@ class DataPoin extends BaseController
     public function simpan()
     {
         $this->dataPoinModel->save([
-            'id'           => $this->request->getVar('id'),
+            'id'     => $this->request->getVar('id'),
             'nip'    => $this->request->getVar('nip'),
             'poin'   => $this->request->getVar('poin'),
         ]);

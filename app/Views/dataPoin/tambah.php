@@ -1,3 +1,4 @@
+
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('sidebar'); ?>
@@ -11,9 +12,9 @@
                         </div>
                     </div> -->
 <a href="/guru" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Guru</a>
-<a href="/siswa" class="nav-item nav-link active"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
+<a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
 <a href="/jadwal" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
-<a href="/poin" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
+<a href="/poin" class="nav-item nav-link active"><i class="fa-solid fa-book me-2"></i>Poin</a>
 <a href="/mapel" class="nav-item nav-link"><i class="fa-solid fa-book-open me-2"></i>Data Mapel</a>
 <a href="/kelas" class="nav-item nav-link"><i class="fa-solid fa-landmark me-2"></i>Data Kelas</a>
 <a href="/users" class="nav-item nav-link"><i class="fa-solid fa-circle-user me-2"></i>Data Users</a>
@@ -32,49 +33,28 @@
 <?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
-<div class="container-fluid pt-4 px-4">
-    <div class="col-12">
+<div class="container-fluid pt-2 px-4 d-flex justify-content-center">
+    <div class="col-sm-12 col-xl-9">
         <div class="bg-secondary rounded h-100 p-4">
-            <div class="headerTable mb-2">
-                <h5>Tabel Data Siswa</h5>
-                <div class="headerHelp d-flex align-items-center flex-row gap-2">
-                    <form class="d-none d-md-flex ms-4">
-                        <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-                        <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-                    </form>
-                    <h5><a class="btn btn-sm btn-info mt-1" href="/siswa/tambah">Tambah</a></h5>
+            <h6 class="mb-4">Tambah Poin</h6>
+
+            <form action="/poin/simpan" method="post">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control <?= ($validation->hasError('nis')) ? 'is-invalid' : ''; ?>" id="nis" placeholder="Masukkan NIS" name="nis" value="<?= old('nis'); ?>">
+                    <label for="floatingInput">NIS</label>
+                    <div id="validationServer03Feedback" class="invalid-feedback">
+                        NIS sudah terdaftar
+                    </div>
                 </div>
-            </div>
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">NIM</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Tanggal Lahir</th>
-                        <th scope="col">Jenis Kelamin</th>
-                        <th scope="col">Alamat</th>
-                        <th scope="col">Tahun Masuk</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($siswa as $s) : ?>
-                        <tr>
-                            <th scope="row"><?= $s['nis']; ?></th>
-                            <td><?= $s['nama_siswa']; ?></td>
-                            <td><?= $s['tgl_lahir']; ?></td>
-                            <td><?= $s['jns_kelamin']; ?></td>
-                            <td><?= $s['alamat']; ?></td>
-                            <td><?= $s['tahun_masuk']; ?></td>
-                            <td>
-                                <a class="btn btn-sm btn-warning" href="/siswa/detail/<?= $s['nis']; ?>">Detail</a>
-                                <a class="btn btn-sm btn-success" href="/siswa/edit/<?= $s['nis']; ?>">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="/siswa/hapus/<?= $s['nis']; ?>">Hapus</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control<?= ($validation->hasError('poin')) ? 'is-invalid' : ''; ?>" id="poin" placeholder="Masukkan Poin" name="poin">
+                    <label for="floatingInput">Poin</label>
+                </div>
+                <div class="button d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Tambah</button>
+                    <a class="btn btn-danger" href="/poin">Cancel</a>
+                </div>
+            </form>
         </div>
     </div>
 </div>

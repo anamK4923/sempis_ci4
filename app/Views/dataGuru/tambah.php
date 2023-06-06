@@ -10,8 +10,8 @@
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div> -->
-<a href="/guru" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Guru</a>
-<a href="/siswa" class="nav-item nav-link active"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
+<a href="/guru" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Data Guru</a>
+<a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
 <a href="/jadwal" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/poin" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
 <a href="/mapel" class="nav-item nav-link"><i class="fa-solid fa-book-open me-2"></i>Data Mapel</a>
@@ -35,43 +35,59 @@
 <div class="container-fluid pt-2 px-4 d-flex justify-content-center">
     <div class="col-sm-12 col-xl-9">
         <div class="bg-secondary rounded h-100 p-4">
-            <h6 class="mb-4">Tambah Siswa</h6>
+            <h6 class="mb-4">Tambah Guru</h6>
 
-            <form action="/siswa/simpan" method="post">
+            <form action="/guru/simpan" method="post">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control <?= ($validation->hasError('nis')) ? 'is-invalid' : ''; ?>" id="nis" placeholder="nis" name="nis" value="<?= old('nis'); ?>">
-                    <label for="floatingInput">NIS</label>
+                    <input type="text" class="form-control <?= ($validation->hasError('nip')) ? 'is-invalid' : ''; ?>" id="nip" placeholder="Isikan NIP" name="nip" value="<?= old('nip'); ?>">
+                    <label for="floatingInput">NIP</label>
                     <div id="validationServer03Feedback" class="invalid-feedback">
-                        NIS sudah terdaftar
+                        NIP sudah terdaftar
                     </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control<?= ($validation->hasError('nama_siswa')) ? 'is-invalid' : ''; ?>" id="nama_siswa" placeholder="name@example.com" name="nama_siswa">
-                    <label for="floatingInput">Nama Siswa</label>
+                    <input type="text" class="form-control<?= ($validation->hasError('nama_guru')) ? 'is-invalid' : ''; ?>" id="nama_guru" placeholder="Isikan Nama" name="nama_guru">
+                    <label for="floatingInput">Nama Guru</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="tgl_lahir" placeholder="tgl" name="tgl_lahir">
+                    <input type="date" class="form-control" id="tgl_lahir" placeholder="Masukkan Tanggal Lahir" name="tgl_lahir">
                     <label for="floatingPassword">Tanggal Lahir</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <select class="form-select" id="jns_kelamin" aria-label="Floating label select example" name="jns_kelamin">
+                    <select class="form-select" id="jenis_kelamin" aria-label="Floating label select example" name="jenis_kelamin">
                         <option selected value="Laki-laki">Laki-Laki</option>
                         <option value="Perempuan">Perempuan</option>
                     </select>
                     <label for="floatingSelect">Jenis Kelamin</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="alamat" placeholder="alamat" name="alamat">
+                    <input type="text" class="form-control" id="alamat" placeholder="Masukkan Alamat" name="alamat">
                     <label for="floatingInput">Alamat</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="tahun_masuk" placeholder="tahun masuk" name="tahun_masuk">
-                    <label for="floatingInput">Tahun Masuk</label>
+                    <input type="text" class="form-control" id="no_hp" placeholder="Masukkan No. HP" name="no_hp">
+                    <label for="floatingInput">No. HP</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="email" placeholder="Masukkan Email" name="email">
+                    <label for="floatingInput">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="jabatan" aria-label="Floating label select example" name="jabatan">
+                        <option selected value="Guru Matpel">Guru Matpel</option>
+                        <option value="TU">TU</option>
+                    </select>
+                    <label for="floatingSelect">Jabatan</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="lulusan" placeholder="Masukkan Lulusan" name="lulusan">
+                    <label for="floatingInput">Lulusan</label>
                 </div>
                 <div class="button d-flex justify-content-between">
                     <button type="submit" class="btn btn-primary">Tambah</button>
-                    <a class="btn btn-danger" href="/siswa">Cancel</a>
+                    <a class="btn btn-danger" href="/guru">Cancel</a>
                 </div>
+
             </form>
         </div>
     </div>

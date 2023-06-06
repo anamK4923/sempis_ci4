@@ -1,3 +1,4 @@
+
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('sidebar'); ?>
@@ -11,10 +12,10 @@
                         </div>
                     </div> -->
 <a href="/guru" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Guru</a>
-<a href="/siswa" class="nav-item nav-link active"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
+<a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
 <a href="/jadwal" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/poin" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
-<a href="/mapel" class="nav-item nav-link"><i class="fa-solid fa-book-open me-2"></i>Data Mapel</a>
+<a href="/mapel" class="nav-item nav-link active"><i class="fa-solid fa-book-open me-2"></i>Data Mapel</a>
 <a href="/kelas" class="nav-item nav-link"><i class="fa-solid fa-landmark me-2"></i>Data Kelas</a>
 <a href="/users" class="nav-item nav-link"><i class="fa-solid fa-circle-user me-2"></i>Data Users</a>
 <!-- <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
@@ -35,42 +36,23 @@
 <div class="container-fluid pt-2 px-4 d-flex justify-content-center">
     <div class="col-sm-12 col-xl-9">
         <div class="bg-secondary rounded h-100 p-4">
-            <h6 class="mb-4">Tambah Siswa</h6>
+            <h6 class="mb-4">Tambah Mapel</h6>
 
-            <form action="/siswa/simpan" method="post">
+            <form action="/mapel/simpan" method="post">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control <?= ($validation->hasError('nis')) ? 'is-invalid' : ''; ?>" id="nis" placeholder="nis" name="nis" value="<?= old('nis'); ?>">
-                    <label for="floatingInput">NIS</label>
+                    <input type="text" class="form-control <?= ($validation->hasError('kode_mapel')) ? 'is-invalid' : ''; ?>" id="kode_mapel" placeholder="Isi Kode Mapel" name="kode_mapel" value="<?= old('kode_mapel'); ?>">
+                    <label for="floatingInput">Kode Mapel</label>
                     <div id="validationServer03Feedback" class="invalid-feedback">
-                        NIS sudah terdaftar
+                        Kode Mapel sudah terdaftar
                     </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control<?= ($validation->hasError('nama_siswa')) ? 'is-invalid' : ''; ?>" id="nama_siswa" placeholder="name@example.com" name="nama_siswa">
-                    <label for="floatingInput">Nama Siswa</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="tgl_lahir" placeholder="tgl" name="tgl_lahir">
-                    <label for="floatingPassword">Tanggal Lahir</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <select class="form-select" id="jns_kelamin" aria-label="Floating label select example" name="jns_kelamin">
-                        <option selected value="Laki-laki">Laki-Laki</option>
-                        <option value="Perempuan">Perempuan</option>
-                    </select>
-                    <label for="floatingSelect">Jenis Kelamin</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="alamat" placeholder="alamat" name="alamat">
-                    <label for="floatingInput">Alamat</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="tahun_masuk" placeholder="tahun masuk" name="tahun_masuk">
-                    <label for="floatingInput">Tahun Masuk</label>
+                    <input type="text" class="form-control<?= ($validation->hasError('nama_mapel')) ? 'is-invalid' : ''; ?>" id="nama_mapel" placeholder="Isikan Nama Mapel" name="nama_mapel">
+                    <label for="floatingInput">Nama Mapel</label>
                 </div>
                 <div class="button d-flex justify-content-between">
                     <button type="submit" class="btn btn-primary">Tambah</button>
-                    <a class="btn btn-danger" href="/siswa">Cancel</a>
+                    <a class="btn btn-danger" href="/mapel">Cancel</a>
                 </div>
             </form>
         </div>
