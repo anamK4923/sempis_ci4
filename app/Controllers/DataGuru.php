@@ -31,7 +31,8 @@ class DataGuru extends BaseController
     {
         $data = [
             'title' => 'Tambah Guru',
-            'role'  => 'Admin TU'
+            'role'  => 'Admin TU',
+            'validation' => \Config\Services::validation()
         ];
 
         return view('admin/dataGuru/tambah', $data);
@@ -42,11 +43,21 @@ class DataGuru extends BaseController
         $this->dataGuruModel->save([
             'nip'           => $this->request->getVar('nip'),
             'nama_guru'    => $this->request->getVar('nama_guru'),
-            // 'tgl_lahir'     => $this->request->getVar('tgl_lahir'),
-            'jns_kelamin'   => $this->request->getVar('jns_kelamin'),
+            'tgl_lahir'     => $this->request->getVar('tgl_lahir'),
+            'jns_kelamin'   => $this->request->getVar('jenis_kelamin'),
             'alamat'        => $this->request->getVar('alamat'),
-            'tahun_masuk'   => $this->request->getVar('tahun_masuk')
+            'email'   => $this->request->getVar('email'),
+            'jabatan'   => $this->request->getVar('jabatan'),
+            'lulusan'   => $this->request->getVar('lulusan')
         ]);
+
+        return redirect()->to('/guru');
+    }
+
+    public function hapus($nip)
+    {
+        // dd($nis);
+        $this->dataGuruModel->where('nip', $nip)->delete();
 
         return redirect()->to('/guru');
     }

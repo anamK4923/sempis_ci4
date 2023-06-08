@@ -31,7 +31,8 @@ class DataMapel extends BaseController
     {
         $data = [
             'title' => 'Tambah Mapel',
-            'role' => 'Admin TU'
+            'role' => 'Admin TU',
+            'validation' => \Config\Services::validation()
         ];
 
         return view('admin/dataMapel/tambah', $data);
@@ -44,6 +45,14 @@ class DataMapel extends BaseController
             'nama_mapel'    => $this->request->getVar('nama_mapel'),
 
         ]);
+
+        return redirect()->to('/mapel');
+    }
+
+    public function hapus($kode_mapel)
+    {
+        // dd($nis);
+        $this->dataMapelModel->where('kode_mapel', $kode_mapel)->delete();
 
         return redirect()->to('/mapel');
     }

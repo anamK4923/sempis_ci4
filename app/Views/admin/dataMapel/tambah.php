@@ -1,3 +1,4 @@
+
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('sidebar'); ?>
@@ -32,41 +33,28 @@
 <?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
-<div class="container-fluid pt-4 px-4">
-    <div class="col-12">
+<div class="container-fluid pt-2 px-4 d-flex justify-content-center">
+    <div class="col-sm-12 col-xl-9">
         <div class="bg-secondary rounded h-100 p-4">
-            <div class="headerTable mb-2">
-                <h5>Tabel Data Siswa</h5>
-                <div class="headerHelp d-flex align-items-center flex-row gap-2">
-                    <form class="d-none d-md-flex ms-4">
-                        <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-                        <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-                    </form>
-                    <h5><a class="btn btn-sm btn-info mt-1" href="/mapel/tambah">Tambah</a></h5>
+            <h6 class="mb-4">Tambah Mapel</h6>
+
+            <form action="/mapel/simpan" method="post">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control <?= ($validation->hasError('kode_mapel')) ? 'is-invalid' : ''; ?>" id="kode_mapel" placeholder="Isi Kode Mapel" name="kode_mapel" value="<?= old('kode_mapel'); ?>">
+                    <label for="floatingInput">Kode Mapel</label>
+                    <div id="validationServer03Feedback" class="invalid-feedback">
+                        Kode Mapel sudah terdaftar
+                    </div>
                 </div>
-            </div>
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Kode Mapel</th>
-                        <th scope="col">Nama Mapel</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($mapel as $m) : ?>
-                        <tr>
-                            <th scope="row"><?= $m['kode_mapel']; ?></th>
-                            <td><?= $m['nama_mapel']; ?></td>
-
-                            <td>
-                                <a class="btn btn-sm btn-success" href="">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="/mapel/hapus/<?= $m['kode_mapel']; ?>">Hapus</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control<?= ($validation->hasError('nama_mapel')) ? 'is-invalid' : ''; ?>" id="nama_mapel" placeholder="Isikan Nama Mapel" name="nama_mapel">
+                    <label for="floatingInput">Nama Mapel</label>
+                </div>
+                <div class="button d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Tambah</button>
+                    <a class="btn btn-danger" href="/mapel">Cancel</a>
+                </div>
+            </form>
         </div>
     </div>
 </div>
