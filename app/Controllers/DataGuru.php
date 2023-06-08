@@ -19,16 +19,22 @@ class DataGuru extends BaseController
             'guru' => $this->dataGuruModel->getGuru()
         ];
 
-        return view('dataGuru/index', $data);
+        if (in_groups('admin')) {
+            $data['role'] = 'Admin TU';
+            return view('admin/dataGuru/index', $data);
+        } elseif (in_groups('kepsek')) {
+            # code...
+        }
     }
 
     public function tambah()
     {
         $data = [
-            'title' => 'Tambah Guru'
+            'title' => 'Tambah Guru',
+            'role'  => 'Admin TU'
         ];
 
-        return view('dataGuru/tambah', $data);
+        return view('admin/dataGuru/tambah', $data);
     }
 
     public function simpan()
@@ -42,6 +48,6 @@ class DataGuru extends BaseController
             'tahun_masuk'   => $this->request->getVar('tahun_masuk')
         ]);
 
-        return redirect()->to('/siswa');
+        return redirect()->to('/guru');
     }
 }

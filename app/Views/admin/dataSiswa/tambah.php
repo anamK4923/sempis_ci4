@@ -36,12 +36,13 @@
     <div class="col-sm-12 col-xl-9">
         <div class="bg-secondary rounded h-100 p-4">
             <h6 class="mb-4">Tambah Siswa</h6>
+
             <form action="/siswa/simpan" method="post">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control <?= ($validation->hasError('nis')) ? 'is-invalid' : ''; ?>" id="nis" placeholder="nis" name="nis" value="<?= old('nis'); ?>">
                     <label for="floatingInput">NIS</label>
                     <div id="validationServer03Feedback" class="invalid-feedback">
-                        Please provide a valid city.
+                        NIS sudah terdaftar
                     </div>
                 </div>
                 <div class="form-floating mb-3">
@@ -68,7 +69,7 @@
                     <label for="floatingInput">Tahun Masuk</label>
                 </div>
                 <div class="button d-flex justify-content-between">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
                     <a class="btn btn-danger" href="/siswa">Cancel</a>
                 </div>
             </form>

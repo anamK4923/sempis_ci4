@@ -21,23 +21,41 @@ class DataSiswa extends BaseController
             'siswa' => $this->dataSiswaModel->getSiswa()
         ];
 
-        return view('dataSiswa/index', $data);
+        if (in_groups('admin')) {
+            $data['role'] = 'Admin TU';
+            return view('admin/dataSiswa/index', $data);
+        } elseif (in_groups('kepsek')) {
+            # code...
+        }
+    }
+
+    public function detail($id)
+    {
+        $data = [
+            'title' => 'Detail Siswa',
+            'validation' => \Config\Services::validation(),
+            'siswa' => $this->dataSiswaModel->getSiswa($id),
+            'role' => 'Admin TU'
+        ];
+
+        return view('admin/dataSiswa/detail', $data);
     }
 
     public function tambah()
     {
         $data = [
             'title' => 'Tambah Siswa',
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'role' => 'Admin TU'
         ];
 
-        return view('dataSiswa/tambah', $data);
+        return view('admin/dataSiswa/tambah', $data);
     }
 
     public function simpan()
     {
         if (!$this->validate([
-            'nis'           => 'required|is_unique[data_siswa.nis]',
+            'nis'           => 'required',
             'nama_siswa'    => 'required',
             'tgl_lahir'     => 'required',
             'jns_kelamin'   => 'required',
@@ -64,10 +82,53 @@ class DataSiswa extends BaseController
         return redirect()->to('/siswa');
     }
 
-    public function hapus($nis)
+    public function hapus($id)
     {
-        dd($nis);
-        $this->dataSiswaModel->where('nis', $nis)->delete();
+        // dd($nis);
+        $this->dataSiswaModel->where('id', $id)->delete();
+
+        return redirect()->to('/siswa');
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'title' => 'Edit Siswa',
+            'validation' => \Config\Services::validation(),
+            'siswa' => $this->dataSiswaModel->getSiswa($id),
+            'role' => 'Admin TU'
+        ];
+
+        return view('admin/dataSiswa/edit', $data);
+    }
+
+    public function update($id)
+    {
+        // dd($this->request->getVar());v
+        // if (!$this->validate([
+        //     'id'           => 'required|is_unique[data_siswa.nis]',
+        //     'nama_siswa'    => 'required',
+        //     'tgl_lahir'     => 'required',
+        //     'jns_kelamin'   => 'required',
+        //     'alamat'        => 'required',
+        //     'tahun_masuk'   => 'required'
+        // ])) {
+        //     $validation = \Config\Services::validation();
+
+        //     // dd($validation);
+
+        //     return redirect()->to('/siswa/edit/' . $this->request->getVar('nis'))->withInput();
+        // }
+
+        $data = [
+            'nama_siswa'    => $this->request->getVar('nama_siswa'),
+            'tgl_lahir'     => $this->request->getVar('tgl_lahir'),
+            'jns_kelamin'   => $this->request->getVar('jns_kelamin'),
+            'alamat'        => $this->request->getVar('alamat'),
+            'tahun_masuk'   => $this->request->getVar('tahun_masuk')
+        ];
+
+        $this->dataSiswaModel->updateData($data, $id);
 
         return redirect()->to('/siswa');
     }
