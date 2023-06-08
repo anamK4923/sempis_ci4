@@ -67,15 +67,9 @@
                             <td><?= $s['alamat']; ?></td>
                             <td><?= $s['tahun_masuk']; ?></td>
                             <td>
-<<<<<<< HEAD:app/Views/admin/dataSiswa/index.php
                                 <a class="btn btn-sm btn-warning" href="/siswa/detail/<?= $s['id']; ?>">Detail</a>
                                 <a class="btn btn-sm btn-success" href="/siswa/edit/<?= $s['id']; ?>">Edit</a>
                                 <a class="btn btn-sm btn-primary" href="/siswa/hapus/<?= $s['id']; ?>">Hapus</a>
-=======
-                                <a class="btn btn-sm btn-warning" href="/siswa/detail/<?= $s['nis']; ?>">Detail</a>
-                                <a class="btn btn-sm btn-success" href="/siswa/edit/<?= $s['nis']; ?>">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="/siswa/hapus/<?= $s['nis']; ?>">Hapus</a>
->>>>>>> 75a2aec9c01e235dd4390e8926c716cec88ca1e5:app/Views/dataSiswa/index.php
                             </td>
                         </tr>
                     <?php endforeach; ?>
