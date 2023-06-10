@@ -55,7 +55,7 @@ class DataSiswa extends BaseController
     public function simpan()
     {
         if (!$this->validate([
-            'nis'           => 'required',
+            'nis'           => 'required|is_unique[data_siswa.nis]',
             'nama_siswa'    => 'required',
             'tgl_lahir'     => 'required',
             'jns_kelamin'   => 'required',
@@ -82,54 +82,44 @@ class DataSiswa extends BaseController
         return redirect()->to('/siswa');
     }
 
-    public function hapus($id)
+    public function hapus($nis)
     {
         // dd($nis);
-        $this->dataSiswaModel->where('id', $id)->delete();
+        $this->dataSiswaModel->where('nis', $nis)->delete();
 
         return redirect()->to('/siswa');
     }
 
-    public function edit($id)
+    public function edit($nis)
     {
         $data = [
             'title' => 'Edit Siswa',
             'validation' => \Config\Services::validation(),
-            'siswa' => $this->dataSiswaModel->getSiswa($id),
+            'siswa' => $this->dataSiswaModel->getSiswa($nis),
             'role' => 'Admin TU'
         ];
 
         return view('admin/dataSiswa/edit', $data);
     }
 
-    public function update($id)
+    public function update()
     {
-        // dd($this->request->getVar());v
-        // if (!$this->validate([
-        //     'id'           => 'required|is_unique[data_siswa.nis]',
-        //     'nama_siswa'    => 'required',
-        //     'tgl_lahir'     => 'required',
-        //     'jns_kelamin'   => 'required',
-        //     'alamat'        => 'required',
-        //     'tahun_masuk'   => 'required'
-        // ])) {
-        //     $validation = \Config\Services::validation();
+        # code...
+        $nis = $this->request->getPost('nis');
 
-        //     // dd($validation);
-
-        //     return redirect()->to('/siswa/edit/' . $this->request->getVar('nis'))->withInput();
-        // }
-
-        $data = [
+        $data = array(
             'nama_siswa'    => $this->request->getVar('nama_siswa'),
             'tgl_lahir'     => $this->request->getVar('tgl_lahir'),
             'jns_kelamin'   => $this->request->getVar('jns_kelamin'),
             'alamat'        => $this->request->getVar('alamat'),
             'tahun_masuk'   => $this->request->getVar('tahun_masuk')
-        ];
+        );
 
-        $this->dataSiswaModel->updateData($data, $id);
-
-        return redirect()->to('/siswa');
+        $ubah = $this->dataSiswaModel->updateSiswa($data, $nis);
+        if ($ubah) {
+            session()->setFlashdata('info', 'Updated Category');
+            // return redirect()->to(base_url('category'));
+            return redirect()->to('/siswa');
+        }
     }
 }
