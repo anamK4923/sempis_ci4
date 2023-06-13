@@ -41,9 +41,9 @@ class DataPoin extends BaseController
     public function simpan()
     {
         $this->dataPoinModel->save([
-            'id'     => $this->request->getVar('id'),
-            'nip'    => $this->request->getVar('nip'),
-            'poin'   => $this->request->getVar('poin'),
+            'nis'    => $this->request->getVar('nis'),
+            'nama'    => $this->request->getVar('nama'),
+            'jml_poin'   => $this->request->getVar('poin'),
         ]);
 
         return redirect()->to('/poin');

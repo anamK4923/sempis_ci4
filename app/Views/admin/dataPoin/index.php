@@ -48,20 +48,25 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">NIS</th>
+                        <th scope="col">Nama</th>
                         <th scope="col">Poin</th>
+                        <th scope="col">Status</th>
 
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($poin as $p) : ?>
                         <tr>
                             <th scope="row"><?= $p['nis']; ?></th>
-                            <td><?= $p['poin']; ?></td>
+                            <td><?= $p['nama']; ?></td>
+                            <td><?= $p['jml_poin']; ?></td>
+                            <td><?= $p['status']; ?></td>
+
 
                             <td>
                                 <a class="btn btn-sm btn-success" href="">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="">Hapus</a>
+                                <a class="btn btn-sm btn-primary" href="/poin/hapus/<?= $p['nis']; ?>">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
