@@ -7,21 +7,22 @@ use CodeIgniter\Model;
 class DataSiswaModel extends Model
 {
     protected $table = 'data_siswa';
-    protected $primarykey = 'id';
+    protected $primarykey = 'nis';
     // protected $useTimestamps = true;
-    protected $allowedFields = ['nis', 'nama_siswa', 'tgl_lahir', 'jns_kelamin', 'alamat', 'tahun_masuk'];
+    protected $allowedFields = ['nis', 'nama_siswa', 'tgl_lahir', 'jns_kelamin', 'alamat', 'tahun_masuk', 'kode_ruang'];
 
-    public function getSiswa($id = false)
+    public function getSiswa($nis = false)
     {
-        if ($id == false) {
+        if ($nis == false) {
             return $this->findAll();
         }
 
-        return $this->where(['id' => $id])->first();
+        return $this->where(['nis' => $nis])->first();
     }
 
-    public function updateData($data, $id)
+    public function updateSiswa($data, $nis)
     {
-        return $this->update($data, ['id' => $id]);
+        # code...
+        return $this->db->table($this->table)->update($data, ['nis' => $nis]);
     }
 }

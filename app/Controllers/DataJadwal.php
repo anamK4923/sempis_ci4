@@ -19,16 +19,24 @@ class DataJadwal extends BaseController
             'jadwal' => $this->dataJadwalModel->getJadwal()
         ];
 
-        return view('dataJadwal/index', $data);
+        if (in_groups('admin')) {
+            $data['role'] = 'Admin TU';
+            return view('admin/dataJadwal/index', $data);
+        } else if (in_groups('guru')) {
+            # code...
+        } elseif (in_groups('kepsek')) {
+            # code...
+        }
     }
 
     public function tambah()
     {
         $data = [
-            'title' => 'Tambah Jadwal'
+            'title' => 'Tambah Jadwal',
+            'role' => 'Admin TU'
         ];
 
-        return view('dataJadwal/tambah', $data);
+        return view('admin/dataJadwal/tambah', $data);
     }
 
     public function simpan()

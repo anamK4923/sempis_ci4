@@ -22,15 +22,19 @@ class DataUsers extends BaseController
             'users' => $this->dataUsersModel->getUsers()
         ];
 
-        return view('dataUsers/index', $data);
+        if (in_groups('admin')) {
+            $data['role'] = 'Admin TU';
+            return view('admin/dataUsers/index', $data);
+        }
     }
 
     public function register()
     {
         $data = [
-            'title' => 'Registrasi'
+            'title' => 'Registrasi',
+            'role' => 'Admin TU'
         ];
-        return view('dataUsers/register', $data);
+        return view('admin/dataUsers/register', $data);
     }
 
     public function hapus($id)

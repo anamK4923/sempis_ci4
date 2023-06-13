@@ -19,17 +19,23 @@ class DataMapel extends BaseController
             'mapel' => $this->dataMapelModel->getMapel()
         ];
 
-        return view('dataMapel/index', $data);
+        if (in_groups('admin')) {
+            $data['role'] = 'Admin TU';
+            return view('admin/dataMapel/index', $data);
+        } elseif (in_groups('kepsek')) {
+            # code...
+        }
     }
 
     public function tambah()
     {
         $data = [
             'title' => 'Tambah Mapel',
+            'role' => 'Admin TU',
             'validation' => \Config\Services::validation()
         ];
 
-        return view('dataMapel/tambah', $data);
+        return view('admin/dataMapel/tambah', $data);
     }
 
     public function simpan()

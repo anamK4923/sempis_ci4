@@ -19,17 +19,23 @@ class DataPoin extends BaseController
             'poin' => $this->dataPoinModel->getPoin()
         ];
 
-        return view('dataPoin/index', $data);
+        if (in_groups('admin')) {
+            $data['role'] = 'Admin TU';
+            return view('admin/dataPoin/index', $data);
+        } elseif (in_groups('kepsek')) {
+            # code...
+        }
     }
 
     public function tambah()
     {
         $data = [
             'title' => 'Tambah Poin',
+            'role' => 'Admin TU',
             'validation' => \Config\Services::validation()
         ];
 
-        return view('dataPoin/tambah', $data);
+        return view('admin/dataPoin/tambah', $data);
     }
 
     public function simpan()

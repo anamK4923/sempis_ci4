@@ -19,17 +19,23 @@ class DataGuru extends BaseController
             'guru' => $this->dataGuruModel->getGuru()
         ];
 
-        return view('dataGuru/index', $data);
+        if (in_groups('admin')) {
+            $data['role'] = 'Admin TU';
+            return view('admin/dataGuru/index', $data);
+        } elseif (in_groups('kepsek')) {
+            # code...
+        }
     }
 
     public function tambah()
     {
         $data = [
             'title' => 'Tambah Guru',
+            'role'  => 'Admin TU',
             'validation' => \Config\Services::validation()
         ];
 
-        return view('dataGuru/tambah', $data);
+        return view('admin/dataGuru/tambah', $data);
     }
 
     public function simpan()
@@ -55,5 +61,4 @@ class DataGuru extends BaseController
 
         return redirect()->to('/guru');
     }
-
 }

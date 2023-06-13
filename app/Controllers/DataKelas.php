@@ -21,17 +21,23 @@ class DataKelas extends BaseController
       'kelas' => $this->dataKelasModel->getKelas()
     ];
 
-    return view('dataKelas/index', $data);
+    if (in_groups('admin')) {
+      $data['role'] = 'Admin TU';
+      return view('admin/dataKelas/index', $data);
+    } elseif (in_groups('kepsek')) {
+      # code...
+    }
   }
 
   public function tambah()
   {
     $data = [
       'title' => 'Tambah Kelas',
-      'validation' => \Config\Services::validation()
+      'validation' => \Config\Services::validation(),
+      'role' => 'Admin TU'
     ];
 
-    return view('dataKelas/tambah', $data);
+    return view('admin/dataKelas/tambah', $data);
   }
 
   public function simpan()
