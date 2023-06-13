@@ -4,9 +4,11 @@ namespace App\Controllers;
 
 use App\Models\DataPoinModel;
 
+
 class DataPoin extends BaseController
 {
     protected $dataPoinModel;
+
     public function __construct()
     {
         $this->dataPoinModel = new DataPoinModel();
@@ -26,26 +28,53 @@ class DataPoin extends BaseController
             # code...
         }
     }
-
-    public function tambah()
+    
+    public function plus()
     {
-        $data = [
-            'title' => 'Tambah Poin',
-            'role' => 'Admin TU',
-            'validation' => \Config\Services::validation()
-        ];
-
-        return view('admin/dataPoin/tambah', $data);
-    }
-
-    public function simpan()
-    {
-        $this->dataPoinModel->save([
-            'nis'    => $this->request->getVar('nis'),
-            'nama'    => $this->request->getVar('nama'),
-            'jml_poin'   => $this->request->getVar('poin'),
-        ]);
-
+        $nis = $this->request->getPost('nis');
+        $poinValues = $this->request->getPost('poin');
+        $poinValues1 = $this->request->getPost('poin1');
+        foreach ($nis as $index => $n) {
+            $a = $poinValues[$index];
+            $b = $poinValues1[$index];
+            $c = $a+$b;
+            $data = [
+                'jml_poin' => $c
+            ];
+    
+            $ubah = $this->dataPoinModel->updatePoin($data, $n);
+    
+            if (!$ubah) {
+                // Handle update failure if necessary
+            }
+        }
+    
+        session()->setFlashdata('info', 'Updated Category');
         return redirect()->to('/poin');
     }
+
+    public function min()
+    {
+        $nis = $this->request->getPost('nis');
+        $poinValues = $this->request->getPost('poin');
+        $poinValues1 = $this->request->getPost('poin1');
+        foreach ($nis as $index => $n) {
+            $a = $poinValues[$index];
+            $b = $poinValues1[$index];
+            $c = $a-$b;
+            $data = [
+                'jml_poin' => $c
+            ];
+    
+            $ubah = $this->dataPoinModel->updatePoin($data, $n);
+    
+            if (!$ubah) {
+                // Handle update failure if necessary
+            }
+        }
+    
+        session()->setFlashdata('info', 'Updated Category');
+        return redirect()->to('/poin');
+    }
+    
 }

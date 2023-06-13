@@ -13,12 +13,15 @@ class DataPoinModel extends Model
     public function getPoin($nis = false)
     {
         if ($nis == false) {
-            return $this->db->table('poin')
-            ->join('status_poin', 'status_poin.nis = poin.nis')
-            ->join('data_siswa', 'data_siswa.nis = poin.nis')
-            ->get()->getResultArray();
-        }
+            return $this->findAll();
 
+        }
         return $this->where(['nis' => $nis])->first();
+    }
+
+    public function updatePoin($data, $nis)
+    {
+        # code...
+        return $this->db->table($this->table)->update($data, ['nis' => $nis]);
     }
 }
