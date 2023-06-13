@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\DataKelasModel;
 use App\Models\DataSiswaModel;
 use Config\Services;
 use PSpell\Config;
@@ -9,9 +10,13 @@ use PSpell\Config;
 class DataSiswa extends BaseController
 {
     protected $dataSiswaModel;
+    protected $join;
     public function __construct()
     {
         $this->dataSiswaModel = new DataSiswaModel();
+        $this->join = $this->dataSiswaModel->select('data_siswa.*, kelas.nama_ruang')
+            ->join('kelas', 'kelas.kode_ruang = data_siswa.kode_ruang')
+            ->findAll();
     }
 
     public function index()
@@ -46,7 +51,8 @@ class DataSiswa extends BaseController
         $data = [
             'title' => 'Tambah Siswa',
             'validation' => \Config\Services::validation(),
-            'role' => 'Admin TU'
+            'role' => 'Admin TU',
+            'kelas' => $this->join
         ];
 
         return view('admin/dataSiswa/tambah', $data);
@@ -60,7 +66,8 @@ class DataSiswa extends BaseController
             'tgl_lahir'     => 'required',
             'jns_kelamin'   => 'required',
             'alamat'        => 'required',
-            'tahun_masuk'   => 'required'
+            'tahun_masuk'   => 'required',
+            'kode_ruang'   => 'required'
         ])) {
             $validation = \Config\Services::validation();
 
@@ -76,7 +83,8 @@ class DataSiswa extends BaseController
             'tgl_lahir'     => $this->request->getVar('tgl_lahir'),
             'jns_kelamin'   => $this->request->getVar('jns_kelamin'),
             'alamat'        => $this->request->getVar('alamat'),
-            'tahun_masuk'   => $this->request->getVar('tahun_masuk')
+            'tahun_masuk'   => $this->request->getVar('tahun_masuk'),
+            'kode_ruang'   => $this->request->getVar('kode_ruang')
         ]);
 
         return redirect()->to('/siswa');
