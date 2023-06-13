@@ -68,6 +68,14 @@
                     <input type="text" class="form-control" id="tahun_masuk" placeholder="tahun masuk" name="tahun_masuk">
                     <label for="floatingInput">Tahun Masuk</label>
                 </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="kode_ruang" aria-label="Floating label select example" name="kode_ruang">
+                        <?php foreach ($kelas as $k) : ?>
+                            <option value="<?= $k['kode_ruang']; ?>"><?= $k['nama_ruang']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <label for="floatingSelect">Kelas</label>
+                </div>
                 <div class="button d-flex justify-content-between">
                     <button type="submit" class="btn btn-primary">Tambah</button>
                     <a class="btn btn-danger" href="/siswa">Cancel</a>
