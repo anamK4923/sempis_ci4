@@ -24,6 +24,8 @@ class DataJadwal extends BaseController
             return view('admin/dataJadwal/index', $data);
         } else if (in_groups('guru')) {
             # code...
+            $data['role'] = 'Guru';
+            return view('guru/dataJadwal/index', $data);
         } elseif (in_groups('kepsek')) {
             # code...
         }
