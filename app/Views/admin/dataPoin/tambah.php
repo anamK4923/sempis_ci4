@@ -38,16 +38,13 @@
         <div class="bg-secondary rounded h-100 p-4">
             <h6 class="mb-4">Tambah Poin</h6>
 
-            <form action="/poin/simpan" method="post">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control <?= ($validation->hasError('nis')) ? 'is-invalid' : ''; ?>" id="nis" placeholder="Masukkan NIS" name="nis" value="<?= old('nis'); ?>">
+            <form action="/poin/update" method="post">
+            <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="nis" placeholder="Masukkan NIS" name="nis" value="<?= $poin['nis']; ?>">
                     <label for="floatingInput">NIS</label>
-                    <div id="validationServer03Feedback" class="invalid-feedback">
-                        NIS sudah terdaftar
-                    </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control<?= ($validation->hasError('poin')) ? 'is-invalid' : ''; ?>" id="poin" placeholder="Masukkan Poin" name="poin">
+                    <input type="text" class="form-control<?= ($validation->hasError('poin')) ? 'is-invalid' : ''; ?>" id="poin" placeholder="Masukkan Poin" name="poin" value="<?= $poin['jml_poin']; ?>">
                     <label for="floatingInput">Poin</label>
                 </div>
                 <div class="button d-flex justify-content-between">

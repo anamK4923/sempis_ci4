@@ -39,29 +39,45 @@
                 <h5>Tabel Data Poin</h5>
                 <div class="headerHelp d-flex align-items-center flex-row gap-2">
                     <form class="d-none d-md-flex ms-4">
-                        <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
                         <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
                     </form>
-                    <h5><a class="btn btn-sm btn-info mt-1" href="/poin/tambah">Tambah</a></h5>
                 </div>
             </div>
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">NIS</th>
+                        <th scope="col">Nama</th>
                         <th scope="col">Poin</th>
-
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($poin as $p) : ?>
                         <tr>
                             <th scope="row"><?= $p['nis']; ?></th>
-                            <td><?= $p['poin']; ?></td>
-
+                            <td><?= $p['jml_poin']; ?></td>
                             <td>
-                                <a class="btn btn-sm btn-success" href="">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="">Hapus</a>
+                                <form id="poinForm" method="POST">
+                                    <input type="hidden" name="nis[]" value="<?= $p['nis']; ?>">
+                                    <input type="hidden" name="poin[]" value="<?= $p['jml_poin']; ?>">
+                                    <input type="text" name="poin1[]" value="0">
+                                    <button type="button" class="btn btn-sm btn-success" onclick="increment()">+</button>
+                                    <button type="button" class="btn btn-sm btn-danger" onclick="decrement()">-</button>
+                                </form>
+                                <script>
+                                    function increment() {
+                                        var form = document.getElementById('poinForm');
+                                        form.action = '/poin/plus';
+                                        form.submit();
+                                    }
+
+                                    function decrement() {
+                                        var form = document.getElementById('poinForm');
+                                        form.action = '/poin/min';
+                                        form.submit();
+                                    }
+                                </script>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -70,4 +86,5 @@
         </div>
     </div>
 </div>
+
 <?= $this->endSection(); ?>

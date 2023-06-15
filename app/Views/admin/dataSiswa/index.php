@@ -54,6 +54,7 @@
                         <th scope="col">Jenis Kelamin</th>
                         <th scope="col">Alamat</th>
                         <th scope="col">Tahun Masuk</th>
+                        <th scope="col">Kelas</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -66,10 +67,11 @@
                             <td><?= $s['jns_kelamin']; ?></td>
                             <td><?= $s['alamat']; ?></td>
                             <td><?= $s['tahun_masuk']; ?></td>
+                            <td><?= $s['kode_ruang']; ?></td>
                             <td>
-                                <a class="btn btn-sm btn-warning" href="/siswa/detail/<?= $s['id']; ?>">Detail</a>
-                                <a class="btn btn-sm btn-success" href="/siswa/edit/<?= $s['id']; ?>">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="/siswa/hapus/<?= $s['id']; ?>">Hapus</a>
+                                <a class="btn btn-sm btn-warning" href="/siswa/detail/<?= $s['nis']; ?>">Detail</a>
+                                <a class="btn btn-sm btn-success" href="/siswa/edit/<?= $s['nis']; ?>">Edit</a>
+                                <a class="btn btn-sm btn-primary" href="/siswa/hapus/<?= $s['nis']; ?>">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

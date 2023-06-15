@@ -52,6 +52,8 @@ $routes->match(['get', 'post'], '/users/(:any)', 'DataUsers::$1');
 // $routes->get('/siswa/(:segment)', 'DataSiswa::$1');
 // $routes->post('/siswa/simpan', 'DataSiswa::simpan');
 
+$routes->get('/siswa/edit/(:any)', 'DataSiswa::edit/$1');
+$routes->get('/poin/plus/(:any)', 'DataPoin::plus/$1');
 
 //Routes Edit Data
 

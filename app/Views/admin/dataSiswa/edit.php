@@ -37,9 +37,11 @@
         <div class="bg-secondary rounded h-100 p-4">
             <h6 class="mb-4">Edit Data Siswa</h6>
 
-            <form action="/siswa/update/<?= $siswa['id']; ?>" method="post">
+            <form action="/siswa/update/<?= $siswa['nis']; ?>" method="post">
+                <?= csrf_field(); ?>
+                <input type="hidden" name="nis" value="<?= $siswa['nis']; ?>">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control<?= ($validation->hasError('nama_siswa')) ? 'is-invalid' : ''; ?>" id="nama_siswa" placeholder="name@example.com" name="nama_siswa" value="<?= $siswa['nama_siswa']; ?>">
+                    <input type="text" class="form-control" id="nama_siswa" placeholder="name@example.com" name="nama_siswa" value="<?= $siswa['nama_siswa']; ?>">
                     <label for="floatingInput">Nama Siswa</label>
                 </div>
                 <div class="form-floating mb-3">

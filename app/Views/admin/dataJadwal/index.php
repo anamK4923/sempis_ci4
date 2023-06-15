@@ -51,7 +51,7 @@
                         <th scope="col">Hari</th>
                         <th scope="col">Kode Kelas</th>
                         <th scope="col">Kode Mapel</th>
-                        <th scope="col">nip</th>
+                        <th scope="col">NIP</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
