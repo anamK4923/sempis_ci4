@@ -19,10 +19,10 @@ class DataPoin extends BaseController
             'poin' => $this->dataPoinModel->getPoin()
         ];
 
-        if (in_groups('admin')) {
+        if (in_groups('Admin TU')) {
             $data['role'] = 'Admin TU';
             return view('admin/dataPoin/index', $data);
-        } elseif (in_groups('kepsek')) {
+        } elseif (in_groups('Kepala Sekolah')) {
             # code...
         }
     }

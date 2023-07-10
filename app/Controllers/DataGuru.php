@@ -19,10 +19,10 @@ class DataGuru extends BaseController
             'guru' => $this->dataGuruModel->getGuru()
         ];
 
-        if (in_groups('admin')) {
+        if (in_groups('Admin TU')) {
             $data['role'] = 'Admin TU';
             return view('admin/dataGuru/index', $data);
-        } elseif (in_groups('kepsek')) {
+        } elseif (in_groups('Kepala Sekolah')) {
             # code...
         }
     }

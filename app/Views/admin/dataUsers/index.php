@@ -38,10 +38,10 @@
             <div class="headerTable mb-2">
                 <h5>Tabel Data User</h5>
                 <div class="headerHelp d-flex align-items-center flex-row gap-2">
-                    <form class="d-none d-md-flex ms-4">
-                        <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-                        <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-                    </form>
+                    <!-- <form class="d-none d-md-flex ms-4"> -->
+                    <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
+                    <!-- <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
+                    </form> -->
                     <h5><a class="btn btn-sm btn-info mt-1" href="/users/register">Tambah</a></h5>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                         <th scope="col">E-Mail</th>
                         <th scope="col">Username</th>
                         <th scope="col">Dibuat Tanggal</th>
-                        <th scope="col">Diperbarui Tanggal</th>
+                        <th scope="col">Role</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -65,7 +65,7 @@
                             <td><?= $s['email']; ?></td>
                             <td><?= $s['username']; ?></td>
                             <td><?= $s['created_at']; ?></td>
-                            <td><?= $s['updated_at']; ?></td>
+                            <td><?= $s['name']; ?></td>
                             <td>
                                 <a class="btn btn-sm btn-primary" href="/users/hapus/<?= $s['id']; ?>">Hapus</a>
                             </td>
