@@ -38,7 +38,7 @@
         <h6 class="d-flex justify-content-end text-primary  ">Home/Dashboard</h6>
     </div>
     <div class="col-sm-6 col-xl-12 mb-4">
-        <h2 class="">Sistem Administrasi SMP Islam Pekalongan</h2>
+        <h3 class="">Welcome To SMP Islam Pekalongan</h3>
     </div>
     <div class="row g-4">
         <div class="col-sm-6 col-xl-3">
@@ -46,7 +46,7 @@
                 <i class="fa fa-chart-line fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Jumlah Siswa</p>
-                    <h6 class="mb-0">250</h6>
+                    <h6 class="mb-0"><?= $siswa; ?></h6>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                 <i class="fa fa-chart-bar fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Jumlah Guru</p>
-                    <h6 class="mb-0">50</h6>
+                    <h6 class="mb-0"><?= $guru; ?></h6>
                     </h6>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                 <i class="fa fa-chart-area fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Jumlah Kelas</p>
-                    <h6 class="mb-0">20</h6>
+                    <h6 class="mb-0"><?= $kelas; ?></h6>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
                 <i class="fa-solid fa-book-open fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Jumlah Mapel</p>
-                    <h6 class="mb-0">1000</h6>
+                    <h6 class="mb-0"><?= $mapel; ?></h6>
                 </div>
             </div>
         </div>

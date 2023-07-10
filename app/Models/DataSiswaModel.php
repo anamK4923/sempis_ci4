@@ -25,4 +25,9 @@ class DataSiswaModel extends Model
         # code...
         return $this->db->table($this->table)->update($data, ['nis' => $nis]);
     }
+
+    public function jumlahSiswa()
+    {
+        return $this->countAll();
+    }
 }

@@ -42,29 +42,33 @@
                         <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
                         <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
                     </form>
-                    <h5><a class="btn btn-sm btn-info mt-1" href="/siswa/tambah">Tambah</a></h5>
+                    <h5><a class="btn btn-sm btn-info mt-1" href="/jadwal/tambah">Tambah</a></h5>
                 </div>
             </div>
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Hari</th>
-                        <th scope="col">Kode Kelas</th>
-                        <th scope="col">Kode Mapel</th>
-                        <th scope="col">NIP</th>
+                        <th scope="col">Jam Dimulai</th>
+                        <th scope="col">Jam Selesai</th>
+                        <th scope="col">Kelas</th>
+                        <th scope="col">Mata Pelajaran</th>
+                        <th scope="col">Guru</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($jadwal as $j) : ?>
                         <tr>
-                            <th scope="row"><?= $j['tanggal']; ?></th>
-                            <td><?= $j['kode_ruang']; ?></td>
-                            <td><?= $j['kode_mapel']; ?></td>
-                            <td><?= $j['nip']; ?></td>
+                            <th scope="row"><?= $j['hari']; ?></th>
+                            <td><?= $j['jam_mulai']; ?></td>
+                            <td><?= $j['jam_selesai']; ?></td>
+                            <td><?= $j['nama_ruang']; ?></td>
+                            <td><?= $j['nama_mapel']; ?></td>
+                            <td><?= $j['nama_guru']; ?></td>
                             <td>
-                                <a class="btn btn-sm btn-success" href="">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="">Hapus</a>
+                                <a class="btn btn-sm btn-success" href="/jadwal/edit/<?= $j['id']; ?>">Edit</a>
+                                <a class="btn btn-sm btn-primary" href="/jadwal/hapus/<?= $j['id']; ?>">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

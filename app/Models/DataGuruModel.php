@@ -22,4 +22,15 @@ class DataGuruModel extends Model
 
         return $this->where(['nip' => $nip])->first();
     }
+
+    public function updateGuru($data, $nip)
+    {
+        # code...
+        return $this->db->table($this->table)->update($data, ['nip' => $nip]);
+    }
+
+    public function jumlahGuru()
+    {
+        return $this->countAll();
+    }
 }

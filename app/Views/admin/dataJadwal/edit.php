@@ -35,38 +35,31 @@
 <div class="container-fluid pt-2 px-4 d-flex justify-content-center">
     <div class="col-sm-12 col-xl-9">
         <div class="bg-secondary rounded h-100 p-4">
-            <h6 class="mb-4">Tambah Siswa</h6>
+            <h6 class="mb-4">Edit Data Jadwal</h6>
 
-            <form action="/siswa/simpan" method="post">
+            <form action="/jadwal/update/<?= $jadwal['id']; ?>" method="post">
+                <?= csrf_field(); ?>
+                <input type="hidden" name="id" value="<?= $jadwal['id']; ?>">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control <?= ($validation->hasError('nis')) ? 'is-invalid' : ''; ?>" id="nis" placeholder="nis" name="nis" value="<?= old('nis'); ?>">
-                    <label for="floatingInput">NIS</label>
-                    <div id="validationServer03Feedback" class="invalid-feedback">
-                        NIS sudah terdaftar
-                    </div>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control<?= ($validation->hasError('nama_siswa')) ? 'is-invalid' : ''; ?>" id="nama_siswa" placeholder="name@example.com" name="nama_siswa">
-                    <label for="floatingInput">Nama Siswa</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="tgl_lahir" placeholder="tgl" name="tgl_lahir">
-                    <label for="floatingPassword">Tanggal Lahir</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <select class="form-select" id="jns_kelamin" aria-label="Floating label select example" name="jns_kelamin">
-                        <option selected value="Laki-laki">Laki-Laki</option>
-                        <option value="Perempuan">Perempuan</option>
+                    <select class="form-select" id="hari" aria-label="Floating label select example" name="hari">
+                        <option value="">----- PILIH -----</option>
+                        <option value="Senin">Senin</option>
+                        <option value="Selasa">Selasa</option>
+                        <option value="Rabu">Rabu</option>
+                        <option value="Kamis">Kamis</option>
+                        <option value="Jumat">Jumat</option>
+                        <option value="Sabtu">Sabtu</option>
+                        <option value="Minggu">Minggu</option>
                     </select>
-                    <label for="floatingSelect">Jenis Kelamin</label>
+                    <label for="floatingSelect">Hari</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="alamat" placeholder="alamat" name="alamat">
-                    <label for="floatingInput">Alamat</label>
+                    <input type="time" class="form-control" id="jam_mulai" placeholder="Jam Dimulai" name="jam_mulai" value="<?= $jadwal['jam_mulai']; ?>">
+                    <label for="floatingInput">Jam Dimulai</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="tahun_masuk" placeholder="tahun masuk" name="tahun_masuk">
-                    <label for="floatingInput">Tahun Masuk</label>
+                    <input type="time" class="form-control" id="jam_selesai" placeholder="Jam Selesai" name="jam_selesai" value="<?= $jadwal['jam_selesai']; ?>">
+                    <label for="floatingInput">Jam Selesai</label>
                 </div>
                 <div class="form-floating mb-3">
                     <select class="form-select" id="kode_ruang" aria-label="Floating label select example" name="kode_ruang">
@@ -77,8 +70,26 @@
                     </select>
                     <label for="floatingSelect">Kelas</label>
                 </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="kode_mapel" aria-label="Floating label select example" name="kode_mapel">
+                        <option value="">----- PILIH -----</option>
+                        <?php foreach ($mapel as $m) : ?>
+                            <option value="<?= $m['kode_mapel']; ?>"><?= $m['nama_mapel']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <label for="floatingSelect">Mata Pelajaran</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="nip" aria-label="Floating label select example" name="nip">
+                        <option value="">----- PILIH -----</option>
+                        <?php foreach ($guru as $g) : ?>
+                            <option value="<?= $g['nip']; ?>"><?= $g['nama_guru']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <label for="floatingSelect">Nama Guru</label>
+                </div>
                 <div class="button d-flex justify-content-between">
-                    <button type="submit" class="btn btn-primary">Tambah</button>
+                    <button type="submit" class="btn btn-primary">Edit</button>
                     <a class="btn btn-danger" href="/siswa">Cancel</a>
                 </div>
             </form>

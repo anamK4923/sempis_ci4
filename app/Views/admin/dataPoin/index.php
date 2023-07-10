@@ -32,40 +32,43 @@
 <?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
+<!-- jika suka naruto kudu nonton ini naruto shippuden opening all reaction 01 - 16 (Blind Reaction) -->
+<!-- TAI -->
 <div class="container-fluid pt-4 px-4">
     <div class="col-12">
         <div class="bg-secondary rounded h-100 p-4">
             <div class="headerTable mb-2">
                 <h5>Tabel Data Poin</h5>
                 <div class="headerHelp d-flex align-items-center flex-row gap-2">
-                    <form class="d-none d-md-flex ms-4">
-                        <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-                    </form>
+                    <!-- <form class="d-none d-md-flex ms-4"> -->
+                    <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
+                    <!-- <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search"> -->
+                    <!-- </form> -->
+                    <!-- <h5><a class="btn btn-sm btn-info mt-1" href="/poin/tambah">Tambah</a></h5> -->
                 </div>
             </div>
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Nama</th>
+                        <th scope="col">NIS</th>
                         <th scope="col">Poin</th>
-                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($poin as $p) : ?>
                         <tr>
-                            <th scope="row"><?= $p['nis']; ?></th>
+                            <th scope="row"><?= $p['nama_siswa']; ?></th>
                             <td><?= $p['jml_poin']; ?></td>
                             <td>
-                                <form id="poinForm" method="POST">
-                                    <input type="hidden" name="nis[]" value="<?= $p['nis']; ?>">
-                                    <input type="hidden" name="poin[]" value="<?= $p['jml_poin']; ?>">
-                                    <input type="text" name="poin1[]" value="0">
-                                    <button type="button" class="btn btn-sm btn-success" onclick="increment()">+</button>
-                                    <button type="button" class="btn btn-sm btn-danger" onclick="decrement()">-</button>
+                                <form id="poinForm" action="/poin/min/<?= $p['nis']; ?>" method="POST">
+                                    <input type="hidden" name="nis" value="<?= $p['nis']; ?>">
+                                    <input type="hidden" name="poin" value="<?= $p['jml_poin']; ?>">
+                                    <input type="number" name="poin1" value="0">
+                                    <button type="submit" class="btn btn-sm btn-success">-</button>
                                 </form>
-                                <script>
+                                <!-- <script>
                                     function increment() {
                                         var form = document.getElementById('poinForm');
                                         form.action = '/poin/plus';
@@ -77,7 +80,16 @@
                                         form.action = '/poin/min';
                                         form.submit();
                                     }
-                                </script>
+                                </script> -->
+                            </td>
+                            <td>
+                                <?php if ($p['jml_poin'] < 30) { ?>
+                                    <h1 class="badge badge-danger text-danger">Panggil BK</h1>
+                                <?php } elseif ($p['jml_poin'] == 30) { ?>
+                                    <h1 class="badge badge-warning text-warning">Peringatan BK</h1>
+                                <?php } else { ?>
+                                    <h1 class="badge badge-success text-success">Tidak ada Pelanggaran</h1>
+                                <?php } ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -86,5 +98,4 @@
         </div>
     </div>
 </div>
-
 <?= $this->endSection(); ?>

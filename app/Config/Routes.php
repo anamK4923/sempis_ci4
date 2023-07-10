@@ -64,7 +64,8 @@ $routes->get('/poin/plus/(:any)', 'DataPoin::plus/$1');
 //Routes Method Hapus
 $routes->delete('/siswa/(:any)', 'DataSiswa::hapus/$1');
 $routes->delete('/users/(:any)', 'DataUsers::hapus/$1');
-
+$routes->delete('/jadwal/(:any)', 'DataJadwal::hapus/$1');
+$routes->delete('/kelas/(:any)', 'DataKelas::hapus/$1');
 
 /*
  * --------------------------------------------------------------------

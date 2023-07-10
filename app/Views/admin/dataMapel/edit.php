@@ -1,4 +1,3 @@
-
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('sidebar'); ?>
@@ -14,8 +13,8 @@
 <a href="/guru" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Guru</a>
 <a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
 <a href="/jadwal" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
-<a href="/poin" class="nav-item nav-link active"><i class="fa-solid fa-book me-2"></i>Poin</a>
-<a href="/mapel" class="nav-item nav-link"><i class="fa-solid fa-book-open me-2"></i>Data Mapel</a>
+<a href="/poin" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
+<a href="/mapel" class="nav-item nav-link mapel"><i class="fa-solid fa-book-open me-2"></i>Data Mapel</a>
 <a href="/kelas" class="nav-item nav-link"><i class="fa-solid fa-landmark me-2"></i>Data Kelas</a>
 <a href="/users" class="nav-item nav-link"><i class="fa-solid fa-circle-user me-2"></i>Data Users</a>
 <!-- <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
@@ -34,25 +33,23 @@
 
 <?= $this->section('content'); ?>
 <div class="container-fluid pt-2 px-4 d-flex justify-content-center">
-    <div class="col-sm-12 col-xl-9">
-        <div class="bg-secondary rounded h-100 p-4">
-            <h6 class="mb-4">Tambah Poin</h6>
+  <div class="col-sm-12 col-xl-9">
+    <div class="bg-secondary rounded h-100 p-4">
+      <h6 class="mb-4">Edit Data Mapel</h6>
 
-            <form action="/poin/update" method="post">
-            <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nis" placeholder="Masukkan NIS" name="nis" value="<?= $poin['nis']; ?>">
-                    <label for="floatingInput">NIS</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control<?= ($validation->hasError('poin')) ? 'is-invalid' : ''; ?>" id="poin" placeholder="Masukkan Poin" name="poin" value="<?= $poin['jml_poin']; ?>">
-                    <label for="floatingInput">Poin</label>
-                </div>
-                <div class="button d-flex justify-content-between">
-                    <button type="submit" class="btn btn-primary">Tambah</button>
-                    <a class="btn btn-danger" href="/poin">Cancel</a>
-                </div>
-            </form>
+      <form action="/mapel/update/<?= $mapel['kode_mapel']; ?>" method="post">
+        <?= csrf_field(); ?>
+        <input type="hidden" name="kode_mapel" value="<?= $mapel['kode_mapel']; ?>">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="nama_mapel" placeholder="name@example.com" name="nama_mapel" value="<?= $mapel['nama_mapel']; ?>">
+          <label for="floatingInput">Nama Mapel</label>
         </div>
+        <div class="button d-flex justify-content-between">
+          <button type="submit" class="btn btn-primary">Edit</button>
+          <a class="btn btn-danger" href="/kelas">Cancel</a>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
 <?= $this->endSection(); ?>

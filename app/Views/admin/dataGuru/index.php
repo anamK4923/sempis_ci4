@@ -38,10 +38,10 @@
             <div class="headerTable mb-2">
                 <h5>Tabel Data Guru</h5>
                 <div class="headerHelp d-flex align-items-center flex-row gap-2">
-                    <form class="d-none d-md-flex ms-4">
-                        <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-                        <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-                    </form>
+                    <!-- <form class="d-none d-md-flex ms-4"> -->
+                    <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
+                    <!-- <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
+                    </form> -->
                     <h5><a class="btn btn-sm btn-info mt-1" href="/guru/tambah">Tambah</a></h5>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                             <td><?= $g['jabatan']; ?></td>
                             <td><?= $g['lulusan']; ?></td>
                             <td>
-                                <a class="btn btn-sm btn-success" href="">Edit</a>
+                                <a class="btn btn-sm btn-success" href="/guru/edit/<?= $g['nip']; ?>">Edit</a>
                                 <a class="btn btn-sm btn-primary" href="/guru/hapus/<?= $g['nip']; ?>">Hapus</a>
                             </td>
                         </tr>

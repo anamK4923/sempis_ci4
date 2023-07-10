@@ -36,23 +36,55 @@
     <div class="col-sm-12 col-xl-10">
         <div class="bg-secondary rounded h-100 p-4">
             <h6 class="mb-4">Tambah Jadwal</h6>
-            <form action="/siswa/simpan" method="post">
+            <form action="/jadwal/simpan" method="post">
                 <?= csrf_field(); ?>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="hari" placeholder="hari" name="Hari" autofocus>
-                    <label for="floatingInput">Hari</label>
+                    <select class="form-select" id="hari" aria-label="Floating label select example" name="hari" autofocus>
+                        <option value="">----- PILIH -----</option>
+                        <option value="Senin">Senin</option>
+                        <option value="Selasa">Selasa</option>
+                        <option value="Rabu">Rabu</option>
+                        <option value="Kamis">Kamis</option>
+                        <option value="Jumat">Jumat</option>
+                        <option value="Sabtu">Sabtu</option>
+                        <option value="Minggu">Minggu</option>
+                    </select>
+                    <label for="floatingSelect">Hari</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="kode_kelas" placeholder="Kode Kelas" name="kode_kelas">
-                    <label for="floatingInput">Kode Kelas</label>
+                    <input type="time" class="form-control" id="jam_mulai" placeholder="Jam Dimulai" name="jam_mulai">
+                    <label for="floatingInput">Jam Dimulai</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="kode_mapel" placeholder="Kode Mata Pelajaran" name="kode_mapel">
-                    <label for="floatingPassword">Kode Mapel</label>
+                    <input type="time" class="form-control" id="jam_selesai" placeholder="Jam Selesai" name="jam_selesai">
+                    <label for="floatingInput">Jam Selesai</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nip" placeholder="NIP" name="nip">
-                    <label for="floatingInput">NIP</label>
+                    <select class="form-select" id="kode_ruang" aria-label="Floating label select example" name="kode_ruang">
+                        <option value="">----- PILIH -----</option>
+                        <?php foreach ($kelas as $k) : ?>
+                            <option value="<?= $k['kode_ruang']; ?>"><?= $k['nama_ruang']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <label for="floatingSelect">Kelas</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="kode_mapel" aria-label="Floating label select example" name="kode_mapel">
+                        <option value="">----- PILIH -----</option>
+                        <?php foreach ($mapel as $m) : ?>
+                            <option value="<?= $m['kode_mapel']; ?>"><?= $m['nama_mapel']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <label for="floatingSelect">Mata Pelajaran</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="nip" aria-label="Floating label select example" name="nip">
+                        <option value="">----- PILIH -----</option>
+                        <?php foreach ($guru as $g) : ?>
+                            <option value="<?= $g['nip']; ?>"><?= $g['nama_guru']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <label for="floatingSelect">Nama Guru</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Tambah</button>
             </form>

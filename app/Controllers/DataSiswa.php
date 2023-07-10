@@ -10,27 +10,28 @@ use PSpell\Config;
 class DataSiswa extends BaseController
 {
     protected $dataSiswaModel;
+    protected $dataKelasModel;
     protected $join;
     public function __construct()
     {
         $this->dataSiswaModel = new DataSiswaModel();
+        $this->dataKelasModel = new DataKelasModel();
         $this->join = $this->dataSiswaModel->select('data_siswa.*, kelas.nama_ruang')
             ->join('kelas', 'kelas.kode_ruang = data_siswa.kode_ruang')
             ->findAll();
-            
     }
 
     public function index()
     {
         $data = [
             'title' => 'Data Siswa',
-            'siswa' => $this->dataSiswaModel->getSiswa()
+            'siswa' => $this->join
         ];
 
-        if (in_groups('admin')) {
+        if (in_groups('Admin TU')) {
             $data['role'] = 'Admin TU';
             return view('admin/dataSiswa/index', $data);
-        } elseif (in_groups('kepsek')) {
+        } elseif (in_groups('Kepala Sekolah')) {
             # code...
         }
     }
@@ -53,7 +54,7 @@ class DataSiswa extends BaseController
             'title' => 'Tambah Siswa',
             'validation' => \Config\Services::validation(),
             'role' => 'Admin TU',
-            'kelas' => $this->join
+            'kelas' => $this->dataKelasModel->getKelas()
         ];
 
         return view('admin/dataSiswa/tambah', $data);
@@ -105,7 +106,8 @@ class DataSiswa extends BaseController
             'title' => 'Edit Siswa',
             'validation' => \Config\Services::validation(),
             'siswa' => $this->dataSiswaModel->getSiswa($nis),
-            'role' => 'Admin TU'
+            'role' => 'Admin TU',
+            'kelas' => $this->dataKelasModel->getKelas()
         ];
 
         return view('admin/dataSiswa/edit', $data);
@@ -116,12 +118,29 @@ class DataSiswa extends BaseController
         # code...
         $nis = $this->request->getPost('nis');
 
+        if (!$this->validate([
+            'nis'           => 'required|is_unique[data_siswa.nis]',
+            'nama_siswa'    => 'required',
+            'tgl_lahir'     => 'required',
+            'jns_kelamin'   => 'required',
+            'alamat'        => 'required',
+            'tahun_masuk'   => 'required',
+            'kode_ruang'   => 'required'
+        ])) {
+            $validation = \Config\Services::validation();
+
+            // dd($validation);
+
+            return redirect()->to('/siswa/edit/' . $nis);
+        }
+
         $data = array(
             'nama_siswa'    => $this->request->getVar('nama_siswa'),
             'tgl_lahir'     => $this->request->getVar('tgl_lahir'),
             'jns_kelamin'   => $this->request->getVar('jns_kelamin'),
             'alamat'        => $this->request->getVar('alamat'),
-            'tahun_masuk'   => $this->request->getVar('tahun_masuk')
+            'tahun_masuk'   => $this->request->getVar('tahun_masuk'),
+            'kode_ruang'   => $this->request->getVar('kode_ruang')
         );
 
         $ubah = $this->dataSiswaModel->updateSiswa($data, $nis);

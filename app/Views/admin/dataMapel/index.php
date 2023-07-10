@@ -38,10 +38,10 @@
             <div class="headerTable mb-2">
                 <h5>Tabel Data Siswa</h5>
                 <div class="headerHelp d-flex align-items-center flex-row gap-2">
-                    <form class="d-none d-md-flex ms-4">
-                        <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-                        <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-                    </form>
+                    <!-- <form class="d-none d-md-flex ms-4"> -->
+                    <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
+                    <!-- <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
+                    </form> -->
                     <h5><a class="btn btn-sm btn-info mt-1" href="/mapel/tambah">Tambah</a></h5>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                     <tr>
                         <th scope="col">Kode Mapel</th>
                         <th scope="col">Nama Mapel</th>
-
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,8 +60,7 @@
                             <td><?= $m['nama_mapel']; ?></td>
 
                             <td>
-                                <a class="btn btn-sm btn-success" href="">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="/mapel/hapus/<?= $m['kode_mapel']; ?>">Hapus</a>
+                                <a class="btn btn-sm btn-success" href="/mapel/edit/<?= $m['kode_mapel']; ?>">Edit</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
