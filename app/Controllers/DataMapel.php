@@ -56,4 +56,32 @@ class DataMapel extends BaseController
 
         return redirect()->to('/mapel');
     }
+    public function edit($kode_mapel)
+    {
+        $data = [
+            'title' => 'Edit Mapel',
+            'validation' => \Config\Services::validation(),
+            'mapel' => $this->dataMapelModel->getMapel($kode_mapel),
+            'role' => 'Admin TU'
+        ];
+
+        return view('admin/dataMapel/edit', $data);
+    }
+
+    public function update()
+    {
+        # code...
+        $kode_mapel = $this->request->getPost('kode_mapel');
+
+        $data = array(
+            'nama_mapel'     => $this->request->getVar('nama_mapel'),
+        );
+
+        $ubah = $this->dataMapelModel->updateMapel($data, $kode_mapel);
+        if ($ubah) {
+            session()->setFlashdata('info', 'Updated Category');
+            // return redirect()->to(base_url('category'));
+            return redirect()->to('/mapel');
+        }
+    }
 }

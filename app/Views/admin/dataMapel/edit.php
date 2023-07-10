@@ -14,8 +14,8 @@
 <a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
 <a href="/jadwal" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/poin" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
-<a href="/mapel" class="nav-item nav-link"><i class="fa-solid fa-book-open me-2"></i>Data Mapel</a>
-<a href="/kelas" class="nav-item nav-link active"><i class="fa-solid fa-landmark me-2"></i>Data Kelas</a>
+<a href="/mapel" class="nav-item nav-link mapel"><i class="fa-solid fa-book-open me-2"></i>Data Mapel</a>
+<a href="/kelas" class="nav-item nav-link"><i class="fa-solid fa-landmark me-2"></i>Data Kelas</a>
 <a href="/users" class="nav-item nav-link"><i class="fa-solid fa-circle-user me-2"></i>Data Users</a>
 <!-- <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
@@ -32,40 +32,22 @@
 <?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
-<div class="container-fluid pt-4 px-4">
-  <div class="col-12">
+<div class="container-fluid pt-2 px-4 d-flex justify-content-center">
+  <div class="col-sm-12 col-xl-9">
     <div class="bg-secondary rounded h-100 p-4">
-      <div class="headerTable mb-2">
-        <h5>Tabel Data Kelas</h5>
-        <div class="headerHelp d-flex align-items-center flex-row gap-2">
-          <form class="d-none d-md-flex ms-4">
-            <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-            <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-          </form>
-          <h5><a class="btn btn-sm btn-info mt-1" href="/kelas/tambah">Tambah</a></h5>
-        </div>
-      </div>
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Kode Ruang</th>
-            <th scope="col">Nama Ruang</th>
-            <th scope="col">Jenis Ruang</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($kelas as $k) : ?>
-            <tr>
-              <th scope="row"><?= $k['kode_ruang']; ?></th>
-              <td><?= $k['nama_ruang']; ?></td>
-              <td><?= $k['jenis_ruang']; ?></td>
-              <td>
-                <a class="btn btn-sm btn-success" href="/kelas/edit/<?= $k['kode_ruang']; ?>">Edit</a>
-              </td>
-            </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
+      <h6 class="mb-4">Edit Data Mapel</h6>
+
+      <form action="/mapel/update/<?= $mapel['kode_mapel']; ?>" method="post">
+        <?= csrf_field(); ?>
+        <input type="hidden" name="kode_mapel" value="<?= $mapel['kode_mapel']; ?>">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="nama_mapel" placeholder="name@example.com" name="nama_mapel" value="<?= $mapel['nama_mapel']; ?>">
+          <label for="floatingInput">Nama Mapel</label>
+          <div class="button d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Edit</button>
+            <a class="btn btn-danger" href="/kelas">Cancel</a>
+          </div>
+      </form>
     </div>
   </div>
 </div>

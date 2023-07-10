@@ -32,40 +32,29 @@
 <?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
-<div class="container-fluid pt-4 px-4">
-  <div class="col-12">
+<div class="container-fluid pt-2 px-4 d-flex justify-content-center">
+  <div class="col-sm-12 col-xl-9">
     <div class="bg-secondary rounded h-100 p-4">
-      <div class="headerTable mb-2">
-        <h5>Tabel Data Kelas</h5>
-        <div class="headerHelp d-flex align-items-center flex-row gap-2">
-          <form class="d-none d-md-flex ms-4">
-            <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-            <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-          </form>
-          <h5><a class="btn btn-sm btn-info mt-1" href="/kelas/tambah">Tambah</a></h5>
-        </div>
-      </div>
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Kode Ruang</th>
-            <th scope="col">Nama Ruang</th>
-            <th scope="col">Jenis Ruang</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($kelas as $k) : ?>
-            <tr>
-              <th scope="row"><?= $k['kode_ruang']; ?></th>
-              <td><?= $k['nama_ruang']; ?></td>
-              <td><?= $k['jenis_ruang']; ?></td>
-              <td>
-                <a class="btn btn-sm btn-success" href="/kelas/edit/<?= $k['kode_ruang']; ?>">Edit</a>
-              </td>
-            </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
+      <h6 class="mb-4">Edit Data Kelas</h6>
+
+      <form action="/kelas/update/<?= $kelas['kode_ruang']; ?>" method="post">
+        <?= csrf_field(); ?>
+        <input type="hidden" name="kode_ruang" value="<?= $kelas['kode_ruang']; ?>">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="nama_ruang" placeholder="name@example.com" name="nama_ruang" value="<?= $kelas['nama_ruang']; ?>">
+          <label for="floatingInput">Nama Ruang</label>
+          <div class="form-floating mb-3">
+            <select class="form-select" id="jenis_ruang" aria-label="Floating label select example" name="jenis_ruang">
+              <option selected value="Teori">Teori</option>
+              <option value="Lab">Lab</option>
+            </select>
+            <label for="floatingSelect">Jenis Ruang</label>
+          </div>
+          <div class="button d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Edit</button>
+            <a class="btn btn-danger" href="/kelas">Cancel</a>
+          </div>
+      </form>
     </div>
   </div>
 </div>

@@ -73,7 +73,7 @@
                             <td><?= $g['jabatan']; ?></td>
                             <td><?= $g['lulusan']; ?></td>
                             <td>
-                                <a class="btn btn-sm btn-success" href="">Edit</a>
+                                <a class="btn btn-sm btn-success" href="/guru/edit/<?= $g['nip']; ?>">Edit</a>
                                 <a class="btn btn-sm btn-primary" href="/guru/hapus/<?= $g['nip']; ?>">Hapus</a>
                             </td>
                         </tr>

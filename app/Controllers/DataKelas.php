@@ -69,4 +69,34 @@ class DataKelas extends BaseController
 
     return redirect()->to('/kelas');
   }
+
+  public function edit($kode_ruang)
+  {
+    $data = [
+      'title' => 'Edit Kelas',
+      'validation' => \Config\Services::validation(),
+      'kelas' => $this->dataKelasModel->getKelas($kode_ruang),
+      'role' => 'Admin TU'
+    ];
+
+    return view('admin/dataKelas/edit', $data);
+  }
+
+  public function update()
+  {
+    # code...
+    $kode_ruang = $this->request->getPost('kode_ruang');
+
+    $data = array(
+      'nama_ruang'     => $this->request->getVar('nama_ruang'),
+      'jenis_ruang'   => $this->request->getVar('jenis_ruang')
+    );
+
+    $ubah = $this->dataKelasModel->updateKelas($data, $kode_ruang);
+    if ($ubah) {
+      session()->setFlashdata('info', 'Updated Category');
+      // return redirect()->to(base_url('category'));
+      return redirect()->to('/kelas');
+    }
+  }
 }

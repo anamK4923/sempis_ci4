@@ -19,4 +19,10 @@ class DataKelasModel extends Model
 
     return $this->where(['kode_ruang' => $kode])->first();
   }
+
+  public function updateKelas($data, $kode_ruang)
+  {
+    # code...
+    return $this->db->table($this->table)->update($data, ['kode_ruang' => $kode_ruang]);
+  }
 }

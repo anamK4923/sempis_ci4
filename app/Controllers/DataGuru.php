@@ -61,4 +61,40 @@ class DataGuru extends BaseController
 
         return redirect()->to('/guru');
     }
+
+    public function edit($nip)
+    {
+        $data = [
+            'title' => 'Edit Guru',
+            'validation' => \Config\Services::validation(),
+            'guru' => $this->dataGuruModel->getGuru($nip),
+            'role' => 'Admin TU'
+        ];
+
+        return view('admin/dataGuru/edit', $data);
+    }
+
+    public function update()
+    {
+        # code...
+        $nip = $this->request->getPost('nip');
+
+        $data = array(
+            'nama_guru'    => $this->request->getVar('nama_guru'),
+            'tgl_lahir'     => $this->request->getVar('tgl_lahir'),
+            'jenis_kelamin'   => $this->request->getVar('jenis_kelamin'),
+            'alamat'        => $this->request->getVar('alamat'),
+            'no_hp'        => $this->request->getVar('no_hp'),
+            'email'   => $this->request->getVar('email'),
+            'jabatan'   => $this->request->getVar('jabatan'),
+            'lulusan'   => $this->request->getVar('lulusan')
+        );
+
+        $ubah = $this->dataGuruModel->updateGuru($data, $nip);
+        if ($ubah) {
+            session()->setFlashdata('info', 'Updated Category');
+            // return redirect()->to(base_url('category'));
+            return redirect()->to('/guru');
+        }
+    }
 }

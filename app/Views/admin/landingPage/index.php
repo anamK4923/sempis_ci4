@@ -38,7 +38,7 @@
         <h6 class="d-flex justify-content-end text-primary  ">Home/Dashboard</h6>
     </div>
     <div class="col-sm-6 col-xl-12 mb-4">
-        <h2 class="">Sistem Administrasi SMP Islam Pekalongan</h2>
+        <h3 class="">Welcome To SMP Islam Pekalongan</h3>
     </div>
     <div class="row g-4">
         <div class="col-sm-6 col-xl-3">

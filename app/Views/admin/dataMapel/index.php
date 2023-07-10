@@ -60,8 +60,7 @@
                             <td><?= $m['nama_mapel']; ?></td>
 
                             <td>
-                                <a class="btn btn-sm btn-success" href="">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="/mapel/hapus/<?= $m['kode_mapel']; ?>">Hapus</a>
+                                <a class="btn btn-sm btn-success" href="/mapel/edit/<?= $m['kode_mapel']; ?>">Edit</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

@@ -19,4 +19,10 @@ class DataMapelModel extends Model
 
         return $this->where(['kode_mapel' => $kode_mapel])->first();
     }
+
+    public function updateMapel($data, $kode_mapel)
+    {
+        # code...
+        return $this->db->table($this->table)->update($data, ['kode_mapel' => $kode_mapel]);
+    }
 }
