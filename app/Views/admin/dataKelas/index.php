@@ -38,10 +38,10 @@
       <div class="headerTable mb-2">
         <h5>Tabel Data Kelas</h5>
         <div class="headerHelp d-flex align-items-center flex-row gap-2">
-          <form class="d-none d-md-flex ms-4">
-            <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-            <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-          </form>
+          <!-- <form class="d-none d-md-flex ms-4"> -->
+          <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
+          <!-- <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search"> -->
+          <!-- </form> -->
           <h5><a class="btn btn-sm btn-info mt-1" href="/kelas/tambah">Tambah</a></h5>
         </div>
       </div>
@@ -51,6 +51,8 @@
             <th scope="col">Kode Ruang</th>
             <th scope="col">Nama Ruang</th>
             <th scope="col">Jenis Ruang</th>
+            <th scope="col">Action</th>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -60,7 +62,11 @@
               <td><?= $k['nama_ruang']; ?></td>
               <td><?= $k['jenis_ruang']; ?></td>
               <td>
+<<<<<<< HEAD
                 <a class="btn btn-sm btn-success" href="/kelas/edit/<?= $k['kode_ruang']; ?>">Edit</a>
+=======
+                <a class="btn btn-sm btn-success" href="">Edit</a>
+>>>>>>> 61787691bad1980bdba0941093a3d9e419c845af
               </td>
             </tr>
           <?php endforeach; ?>

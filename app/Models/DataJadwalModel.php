@@ -9,7 +9,7 @@ class DataJadwalModel extends Model
     protected $table = 'jadwal';
     protected $primarykey = 'id';
     // protected $useTimestamps = true;
-    protected $allowedFields = ['id', 'hari', 'kode_kelas', 'kode_mapel', 'nip'];
+    protected $allowedFields = ['id', 'hari', 'jam_mulai', 'jam_selesai', 'kode_ruang', 'kode_mapel', 'nip'];
 
     public function getJadwal($id = false)
     {
@@ -18,5 +18,11 @@ class DataJadwalModel extends Model
         }
 
         return $this->where(['id' => $id])->first();
+    }
+
+    public function updateJadwal($data, $id)
+    {
+        # code...
+        return $this->db->table($this->table)->update($data, ['id' => $id]);
     }
 }

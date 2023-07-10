@@ -49,21 +49,25 @@
                 <thead>
                     <tr>
                         <th scope="col">Hari</th>
-                        <th scope="col">Kode Kelas</th>
-                        <th scope="col">Kode Mapel</th>
-                        <th scope="col">NIP</th>
+                        <th scope="col">Jam Dimulai</th>
+                        <th scope="col">Jam Selesai</th>
+                        <th scope="col">Kelas</th>
+                        <th scope="col">Mata Pelajaran</th>
+                        <th scope="col">Guru</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($jadwal as $j) : ?>
                         <tr>
-                            <th scope="row"><?= $j['tanggal']; ?></th>
-                            <td><?= $j['kode_ruang']; ?></td>
-                            <td><?= $j['kode_mapel']; ?></td>
-                            <td><?= $j['nip']; ?></td>
+                            <th scope="row"><?= $j['hari']; ?></th>
+                            <td><?= $j['jam_mulai']; ?></td>
+                            <td><?= $j['jam_selesai']; ?></td>
+                            <td><?= $j['nama_ruang']; ?></td>
+                            <td><?= $j['nama_mapel']; ?></td>
+                            <td><?= $j['nama_guru']; ?></td>
                             <td>
-                                <a class="btn btn-sm btn-success" href="">Edit</a>
+                                <a class="btn btn-sm btn-success" href="/jadwal/edit/<?= $j['id']; ?>">Edit</a>
                                 <a class="btn btn-sm btn-primary" href="/jadwal/hapus/<?= $j['id']; ?>">Hapus</a>
                             </td>
                         </tr>
