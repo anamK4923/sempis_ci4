@@ -45,11 +45,11 @@
                     <h5><a class="btn btn-sm btn-info mt-1" href="/nilai/tambah">Tambah</a></h5>
                 </div>
             </div>
-            <table class="table table-bordered table-hover">
+            <!-- <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">NIS</th>
-                        <th scope="col">Nilai</th>
+                        <th scope="col">Mapel</th>
+                        <th scope="col">Kelas</th>
                         <th scope="col">Rata-rata</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -67,7 +67,29 @@
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
-            </table>
+            </table> -->
+            <div class="row">
+                <div class="dropdown">
+                    <button class="btn btn-info dropdown-toggle ms-4 mx-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                    <!-- </div>
+                <div class="dropdown"> -->
+                    <button class="btn btn-info dropdown-toggle mx-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>

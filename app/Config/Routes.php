@@ -34,6 +34,7 @@ $routes->get('/siswa', 'DataSiswa::index');
 $routes->get('/guru', 'DataGuru::index');
 $routes->get('/nilai', 'DataNilai::index');
 $routes->get('/jadwal', 'DataJadwal::index');
+$routes->get('/presensi', 'DataPresensi::index');
 $routes->get('/kelas', 'DataKelas::index');
 $routes->get('/poin', 'DataPoin::index');
 $routes->get('/mapel', 'DataMapel::index');
@@ -49,10 +50,12 @@ $routes->match(['get', 'post'], '/kelas/(:any)', 'DataKelas::$1');
 $routes->match(['get', 'post'], '/poin/(:any)', 'DataPoin::$1');
 $routes->match(['get', 'post'], '/mapel/(:any)', 'DataMapel::$1');
 $routes->match(['get', 'post'], '/users/(:any)', 'DataUsers::$1');
+$routes->match(['get', 'post'], '/presensi/(:any)', 'DataPresensi::$1');
 // $routes->get('/siswa/(:segment)', 'DataSiswa::$1');
 // $routes->post('/siswa/simpan', 'DataSiswa::simpan');
 
 $routes->get('/siswa/edit/(:any)', 'DataSiswa::edit/$1');
+$routes->get('/nilai/edit/(:any)', 'DataNilai::edit/$1');
 $routes->get('/poin/plus/(:any)', 'DataPoin::plus/$1');
 
 //Routes Edit Data
