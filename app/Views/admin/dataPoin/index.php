@@ -52,10 +52,7 @@
                         <th scope="col">NIS</th>
                         <th scope="col">Poin</th>
                         <th scope="col">Action</th>
-<<<<<<< HEAD
                         <th scope="col">Status</th>
-=======
->>>>>>> b64cb4cf5a6221ab341c5562d0c75d921befd31d
 
                     </tr>
                 </thead>
@@ -65,20 +62,11 @@
                             <th scope="row"><?= $p['nama_siswa']; ?></th>
                             <td><?= $p['jml_poin']; ?></td>
                             <td>
-<<<<<<< HEAD
-                                <form id="poinForm" method="POST">
-                                    <input type="hidden" name="nis[]" value="<?= $p['nis']; ?>">
-                                    <input type="hidden" name="poin[]" value="<?= $p['jml_poin']; ?>">
-                                    <input type="text" name="poin1[]" value="0">
-                                    <button type="button" class="btn btn-sm btn-success" onclick="increment()" value="<?= $p['nis']; ?>">+</button>
-                                    <button type="button" class="btn btn-sm btn-danger" onclick="decrement()" value="<?= $p['nis']; ?>">-</button>
-=======
                                 <form id="poinForm" action="/poin/min/<?= $p['nis']; ?>" method="POST">
                                     <input type="hidden" name="nis" value="<?= $p['nis']; ?>">
                                     <input type="hidden" name="poin" value="<?= $p['jml_poin']; ?>">
                                     <input type="number" name="poin1" value="0">
                                     <button type="submit" class="btn btn-sm btn-success">-</button>
->>>>>>> b64cb4cf5a6221ab341c5562d0c75d921befd31d
                                 </form>
                                 <!-- <script>
                                     function increment() {
