@@ -32,6 +32,7 @@
 <?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
+<!-- jika suka naruto kudu nonton ini naruto shippuden opening all reaction 01 - 16 (Blind Reaction) -->
 <div class="container-fluid pt-4 px-4">
     <div class="col-12">
         <div class="bg-secondary rounded h-100 p-4">
@@ -48,8 +49,8 @@
                     <tr>
                         <th scope="col">Nama</th>
                         <th scope="col">Poin</th>
-                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -58,14 +59,13 @@
                             <th scope="row"><?= $p['nis']; ?></th>
                             <td><?= $p['jml_poin']; ?></td>
                             <td>
-                                <form id="poinForm" method="POST">
-                                    <input type="hidden" name="nis[]" value="<?= $p['nis']; ?>">
-                                    <input type="hidden" name="poin[]" value="<?= $p['jml_poin']; ?>">
-                                    <input type="text" name="poin1[]" value="0">
-                                    <button type="button" class="btn btn-sm btn-success" onclick="increment()">+</button>
-                                    <button type="button" class="btn btn-sm btn-danger" onclick="decrement()">-</button>
+                                <form id="poinForm" action="/poin/min/<?= $p['nis']; ?>" method="POST">
+                                    <input type="hidden" name="nis" value="<?= $p['nis']; ?>">
+                                    <input type="hidden" name="poin" value="<?= $p['jml_poin']; ?>">
+                                    <input type="number" name="poin1" value="0">
+                                    <button type="submit" class="btn btn-sm btn-success">-</button>
                                 </form>
-                                <script>
+                                <!-- <script>
                                     function increment() {
                                         var form = document.getElementById('poinForm');
                                         form.action = '/poin/plus';
@@ -77,7 +77,7 @@
                                         form.action = '/poin/min';
                                         form.submit();
                                     }
-                                </script>
+                                </script> -->
                             </td>
                         </tr>
                     <?php endforeach; ?>

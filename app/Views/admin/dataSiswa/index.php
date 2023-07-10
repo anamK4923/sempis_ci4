@@ -61,7 +61,7 @@
                 <tbody>
                     <?php foreach ($siswa as $s) : ?>
                         <tr>
-                            <th scope="row"><?= $s['nis']; ?></th>
+                            <th scope="row" id="nis"><?= $s['nis']; ?></th>
                             <td><?= $s['nama_siswa']; ?></td>
                             <td><?= $s['tgl_lahir']; ?></td>
                             <td><?= $s['jns_kelamin']; ?></td>
