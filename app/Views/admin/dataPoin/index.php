@@ -52,13 +52,14 @@
                         <th scope="col">NIS</th>
                         <th scope="col">Poin</th>
                         <th scope="col">Action</th>
+                        <th scope="col">Status</th>
 
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($poin as $p) : ?>
                         <tr>
-                            <th scope="row"><?= $p['nis']; ?></th>
+                            <th scope="row"><?= $p['nama_siswa']; ?></th>
                             <td><?= $p['jml_poin']; ?></td>
                             <td>
                                 <form id="poinForm" action="/poin/min/<?= $p['nis']; ?>" method="POST">
@@ -80,6 +81,15 @@
                                         form.submit();
                                     }
                                 </script> -->
+                            </td>
+                            <td>
+                                <?php if ($p['jml_poin'] < 30) { ?>
+                                    <h1 class="badge badge-danger text-danger">Panggil BK</h1>
+                                <?php } elseif ($p['jml_poin'] == 30) { ?>
+                                    <h1 class="badge badge-warning text-warning">Peringatan BK</h1>
+                                <?php } else { ?>
+                                    <h1 class="badge badge-success text-success">Tidak ada Pelanggaran</h1>
+                                <?php } ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
