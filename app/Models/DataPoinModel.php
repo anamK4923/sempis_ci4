@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use finfo;
 
 class DataPoinModel extends Model
 {
@@ -13,10 +14,12 @@ class DataPoinModel extends Model
     public function getPoin($nis = false)
     {
         if ($nis == false) {
-            return $this->findAll();
+            return $this->findAll(); 
 
         }
-        return $this->where(['nis' => $nis])->first();
+        return $this->where(['nis' =>
+        
+        $nis])->first();
     }
 
     public function updatePoin($data, $nis)

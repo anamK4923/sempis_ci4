@@ -40,17 +40,22 @@
                 <h5>Tabel Data Poin</h5>
                 <div class="headerHelp d-flex align-items-center flex-row gap-2">
                     <form class="d-none d-md-flex ms-4">
+                        <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
                         <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
                     </form>
+                    <h5><a class="btn btn-sm btn-info mt-1" href="/poin/tambah">Tambah</a></h5>
                 </div>
             </div>
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Nama</th>
+                        <th scope="col">NIS</th>
                         <th scope="col">Poin</th>
                         <th scope="col">Action</th>
+<<<<<<< HEAD
                         <th scope="col">Status</th>
+=======
+>>>>>>> b64cb4cf5a6221ab341c5562d0c75d921befd31d
 
                     </tr>
                 </thead>
@@ -60,14 +65,22 @@
                             <th scope="row"><?= $p['nama_siswa']; ?></th>
                             <td><?= $p['jml_poin']; ?></td>
                             <td>
+<<<<<<< HEAD
                                 <form id="poinForm" method="POST">
                                     <input type="hidden" name="nis[]" value="<?= $p['nis']; ?>">
                                     <input type="hidden" name="poin[]" value="<?= $p['jml_poin']; ?>">
                                     <input type="text" name="poin1[]" value="0">
                                     <button type="button" class="btn btn-sm btn-success" onclick="increment()" value="<?= $p['nis']; ?>">+</button>
                                     <button type="button" class="btn btn-sm btn-danger" onclick="decrement()" value="<?= $p['nis']; ?>">-</button>
+=======
+                                <form id="poinForm" action="/poin/min/<?= $p['nis']; ?>" method="POST">
+                                    <input type="hidden" name="nis" value="<?= $p['nis']; ?>">
+                                    <input type="hidden" name="poin" value="<?= $p['jml_poin']; ?>">
+                                    <input type="number" name="poin1" value="0">
+                                    <button type="submit" class="btn btn-sm btn-success">-</button>
+>>>>>>> b64cb4cf5a6221ab341c5562d0c75d921befd31d
                                 </form>
-                                <script>
+                                <!-- <script>
                                     function increment() {
                                         var form = document.getElementById('poinForm');
                                         form.action = '/poin/plus';
@@ -79,7 +92,7 @@
                                         form.action = '/poin/min';
                                         form.submit();
                                     }
-                                </script>
+                                </script> -->
                             </td>
                             <td>
                                 <?php if ($p['jml_poin'] < 30) { ?>
@@ -97,5 +110,4 @@
         </div>
     </div>
 </div>
-
 <?= $this->endSection(); ?>

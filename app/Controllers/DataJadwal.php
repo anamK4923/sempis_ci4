@@ -19,12 +19,12 @@ class DataJadwal extends BaseController
             'jadwal' => $this->dataJadwalModel->getJadwal()
         ];
 
-        if (in_groups('admin')) {
+        if (in_groups('Admin TU')) {
             $data['role'] = 'Admin TU';
             return view('admin/dataJadwal/index', $data);
-        } else if (in_groups('guru')) {
+        } else if (in_groups('Guru')) {
             # code...
-        } elseif (in_groups('kepsek')) {
+        } elseif (in_groups('Kepala Sekolah')) {
             # code...
         }
     }

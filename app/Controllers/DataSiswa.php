@@ -24,13 +24,13 @@ class DataSiswa extends BaseController
     {
         $data = [
             'title' => 'Data Siswa',
-            'siswa' => $this->dataSiswaModel->getSiswa()
+            'siswa' => $this->join
         ];
 
-        if (in_groups('admin')) {
+        if (in_groups('Admin TU')) {
             $data['role'] = 'Admin TU';
             return view('admin/dataSiswa/index', $data);
-        } elseif (in_groups('kepsek')) {
+        } elseif (in_groups('Kepala Sekolah')) {
             # code...
         }
     }

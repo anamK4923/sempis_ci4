@@ -19,10 +19,10 @@ class DataMapel extends BaseController
             'mapel' => $this->dataMapelModel->getMapel()
         ];
 
-        if (in_groups('admin')) {
+        if (in_groups('Admin TU')) {
             $data['role'] = 'Admin TU';
             return view('admin/dataMapel/index', $data);
-        } elseif (in_groups('kepsek')) {
+        } elseif (in_groups('Kepala Sekolah')) {
             # code...
         }
     }
