@@ -7,16 +7,21 @@ use CodeIgniter\Model;
 class DataPoinModel extends Model
 {
     protected $table = 'poin';
-    protected $primarykey = 'id';
     // protected $useTimestamps = true;
-    protected $allowedFields = ['id', 'nis', 'poin'];
+    protected $allowedFields = ['nis', 'jml_poin'];
 
-    public function getPoin($id = false)
+    public function getPoin($nis = false)
     {
-        if ($id == false) {
+        if ($nis == false) {
             return $this->findAll();
-        }
 
-        return $this->where(['id' => $id])->first();
+        }
+        return $this->where(['nis' => $nis])->first();
+    }
+
+    public function updatePoin($data, $nis)
+    {
+        # code...
+        return $this->db->table($this->table)->update($data, ['nis' => $nis]);
     }
 }

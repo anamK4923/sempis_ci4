@@ -17,6 +17,7 @@ class DataSiswa extends BaseController
         $this->join = $this->dataSiswaModel->select('data_siswa.*, kelas.nama_ruang')
             ->join('kelas', 'kelas.kode_ruang = data_siswa.kode_ruang')
             ->findAll();
+            
     }
 
     public function index()

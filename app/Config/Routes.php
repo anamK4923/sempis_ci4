@@ -32,6 +32,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/siswa', 'DataSiswa::index');
 $routes->get('/guru', 'DataGuru::index');
+$routes->get('/nilai', 'DataNilai::index');
 $routes->get('/jadwal', 'DataJadwal::index');
 $routes->get('/kelas', 'DataKelas::index');
 $routes->get('/poin', 'DataPoin::index');
@@ -42,6 +43,7 @@ $routes->get('/users', 'DataUsers::index');
 // $routes->get('/siswa/tambah', 'DataSiswa::tambah');
 $routes->match(['get', 'post'], '/siswa/(:any)', 'DataSiswa::$1');
 $routes->match(['get', 'post'], '/guru/(:any)', 'DataGuru::$1');
+$routes->match(['get', 'post'], '/nilai/(:any)', 'DataNilai::$1');
 $routes->match(['get', 'post'], '/jadwal/(:any)', 'DataJadwal::$1');
 $routes->match(['get', 'post'], '/kelas/(:any)', 'DataKelas::$1');
 $routes->match(['get', 'post'], '/poin/(:any)', 'DataPoin::$1');
@@ -51,6 +53,7 @@ $routes->match(['get', 'post'], '/users/(:any)', 'DataUsers::$1');
 // $routes->post('/siswa/simpan', 'DataSiswa::simpan');
 
 $routes->get('/siswa/edit/(:any)', 'DataSiswa::edit/$1');
+$routes->get('/poin/plus/(:any)', 'DataPoin::plus/$1');
 
 //Routes Edit Data
 
