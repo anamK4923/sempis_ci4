@@ -62,11 +62,7 @@
               <td><?= $k['nama_ruang']; ?></td>
               <td><?= $k['jenis_ruang']; ?></td>
               <td>
-<<<<<<< HEAD
                 <a class="btn btn-sm btn-success" href="/kelas/edit/<?= $k['kode_ruang']; ?>">Edit</a>
-=======
-                <a class="btn btn-sm btn-success" href="">Edit</a>
->>>>>>> 61787691bad1980bdba0941093a3d9e419c845af
               </td>
             </tr>
           <?php endforeach; ?>

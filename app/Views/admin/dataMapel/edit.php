@@ -43,10 +43,11 @@
         <div class="form-floating mb-3">
           <input type="text" class="form-control" id="nama_mapel" placeholder="name@example.com" name="nama_mapel" value="<?= $mapel['nama_mapel']; ?>">
           <label for="floatingInput">Nama Mapel</label>
-          <div class="button d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary">Edit</button>
-            <a class="btn btn-danger" href="/kelas">Cancel</a>
-          </div>
+        </div>
+        <div class="button d-flex justify-content-between">
+          <button type="submit" class="btn btn-primary">Edit</button>
+          <a class="btn btn-danger" href="/kelas">Cancel</a>
+        </div>
       </form>
     </div>
   </div>

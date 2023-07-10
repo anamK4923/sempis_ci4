@@ -25,4 +25,9 @@ class DataKelasModel extends Model
     # code...
     return $this->db->table($this->table)->update($data, ['kode_ruang' => $kode_ruang]);
   }
+
+  public function jumlahKelas()
+  {
+    return $this->countAll();
+  }
 }

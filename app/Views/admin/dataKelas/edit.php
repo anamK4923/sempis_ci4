@@ -43,17 +43,18 @@
         <div class="form-floating mb-3">
           <input type="text" class="form-control" id="nama_ruang" placeholder="name@example.com" name="nama_ruang" value="<?= $kelas['nama_ruang']; ?>">
           <label for="floatingInput">Nama Ruang</label>
-          <div class="form-floating mb-3">
-            <select class="form-select" id="jenis_ruang" aria-label="Floating label select example" name="jenis_ruang">
-              <option selected value="Teori">Teori</option>
-              <option value="Lab">Lab</option>
-            </select>
-            <label for="floatingSelect">Jenis Ruang</label>
-          </div>
-          <div class="button d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary">Edit</button>
-            <a class="btn btn-danger" href="/kelas">Cancel</a>
-          </div>
+        </div>
+        <div class="form-floating mb-3">
+          <select class="form-select" id="jenis_ruang" aria-label="Floating label select example" name="jenis_ruang">
+            <option selected value="Teori">Teori</option>
+            <option value="Lab">Lab</option>
+          </select>
+          <label for="floatingSelect">Jenis Ruang</label>
+        </div>
+        <div class="button d-flex justify-content-between">
+          <button type="submit" class="btn btn-primary">Edit</button>
+          <a class="btn btn-danger" href="/kelas">Cancel</a>
+        </div>
       </form>
     </div>
   </div>

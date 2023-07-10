@@ -25,4 +25,9 @@ class DataMapelModel extends Model
         # code...
         return $this->db->table($this->table)->update($data, ['kode_mapel' => $kode_mapel]);
     }
+
+    public function jumlahMapel()
+    {
+        return $this->countAll();
+    }
 }

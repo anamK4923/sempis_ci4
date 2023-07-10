@@ -28,4 +28,9 @@ class DataGuruModel extends Model
         # code...
         return $this->db->table($this->table)->update($data, ['nip' => $nip]);
     }
+
+    public function jumlahGuru()
+    {
+        return $this->countAll();
+    }
 }
