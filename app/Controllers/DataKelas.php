@@ -21,10 +21,10 @@ class DataKelas extends BaseController
       'kelas' => $this->dataKelasModel->getKelas()
     ];
 
-    if (in_groups('admin')) {
+    if (in_groups('Admin TU')) {
       $data['role'] = 'Admin TU';
       return view('admin/dataKelas/index', $data);
-    } elseif (in_groups('kepsek')) {
+    } elseif (in_groups('Kepala Sekolah')) {
       # code...
     }
   }

@@ -38,10 +38,10 @@
             <div class="headerTable mb-2">
                 <h5>Tabel Data Siswa</h5>
                 <div class="headerHelp d-flex align-items-center flex-row gap-2">
-                    <form class="d-none d-md-flex ms-4">
-                        <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-                        <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-                    </form>
+                    <!-- <form class="d-none d-md-flex ms-4"> -->
+                    <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
+                    <!-- <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search"> -->
+                    <!-- </form> -->
                     <h5><a class="btn btn-sm btn-info mt-1" href="/siswa/tambah">Tambah</a></h5>
                 </div>
             </div>
@@ -67,11 +67,9 @@
                             <td><?= $s['jns_kelamin']; ?></td>
                             <td><?= $s['alamat']; ?></td>
                             <td><?= $s['tahun_masuk']; ?></td>
-                            <td><?= $s['kode_ruang']; ?></td>
+                            <td><?= $s['nama_ruang']; ?></td>
                             <td>
-                                <a class="btn btn-sm btn-warning" href="/siswa/detail/<?= $s['nis']; ?>">Detail</a>
                                 <a class="btn btn-sm btn-success" href="/siswa/edit/<?= $s['nis']; ?>">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="/siswa/hapus/<?= $s['nis']; ?>">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

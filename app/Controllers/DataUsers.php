@@ -10,19 +10,24 @@ use PSpell\Config;
 class DataUsers extends BaseController
 {
     protected $dataUsersModel;
+    protected $join;
     public function __construct()
     {
         $this->dataUsersModel = new DataUsersModel();
+        $this->join = $this->dataUsersModel->select('users.*, auth_groups.name')
+            ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+            ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+            ->findAll();
     }
 
     public function index()
     {
         $data = [
             'title' => 'Data User',
-            'users' => $this->dataUsersModel->getUsers()
+            'users' => $this->join
         ];
 
-        if (in_groups('admin')) {
+        if (in_groups('Admin TU')) {
             $data['role'] = 'Admin TU';
             return view('admin/dataUsers/index', $data);
         }
