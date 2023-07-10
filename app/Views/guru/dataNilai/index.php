@@ -42,14 +42,20 @@
                         <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
                         <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
                     </form>
-                    <h5><a class="btn btn-sm btn-info mt-1" href="/nilai/tambah">Tambah</a></h5>
+                    <h5><a class="btn btn-sm btn-info mt-1" href="">Tambah</a></h5>
                 </div>
             </div>
-            <!-- <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Mapel</th>
-                        <th scope="col">Kelas</th>
+                        <th scope="col">NIS</th>
+                        <th scope="col">Kode Mapel</th>
+                        <th scope="col">Kode Kelas</th>
+                        <th scope="col">Tugas 1</th>
+                        <th scope="col">Tugas 2</th>
+                        <th scope="col">Tugas 3</th>
+                        <th scope="col">UTS</th>
+                        <th scope="col">UAS</th>
                         <th scope="col">Rata-rata</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -58,26 +64,22 @@
                     <?php foreach ($nilai as $n) : ?>
                         <tr>
                             <th scope="row"><?= $n['nis']; ?></th>
-                            <td><?= $n['nilai']; ?></td>
+                            <td><?= $n['kode_mapel']; ?></td>
+                            <td><?= $n['kode_ruang']; ?></td>
+                            <td><?= $n['tugas_1']; ?></td>
+                            <td><?= $n['tugas_2']; ?></td>
+                            <td><?= $n['tugas_3']; ?></td>
+                            <td><?= $n['uts']; ?></td>
+                            <td><?= $n['uas']; ?></td>
                             <td><?= $n['rata_rata']; ?></td>
                             <td>
-                                <a class="btn btn-sm btn-success" href="">Edit</a>
+                                <a class="btn btn-sm btn-success" href="/nilai/edit">Edit</a>
                                 <a class="btn btn-sm btn-primary" href="">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
-            </table> -->
-            <div class="dropdown">
-                <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown button
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
+            </table>
         </div>
     </div>
 </div>

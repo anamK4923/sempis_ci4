@@ -20,18 +20,25 @@ class DataPresensi extends BaseController
             'title' => 'Data Presensi',
             'presensi' => $this->dataPresensiModel->getPresensi()
         ];
-
-        return view('dataPresensi/index', $data);
+        if (in_groups('Guru')) {
+            $data['role'] = 'Guru';
+            return view('guru/dataPresensi/index', $data);
+        }
+        // return view('dataPresensi/index', $data);
     }
 
     public function tambah()
     {
         $data = [
             'title' => 'Tambah Presensi',
+            'role' => 'Guru',
             'validation' => \Config\Services::validation()
         ];
-
-        return view('dataPresensi/tambah', $data);
+        if (in_groups('Guru')) {
+            $data['role'] = 'Guru';
+            return view('guru/dataPresensi/tambah', $data);
+        }
+        // return view('dataPresensi/tambah', $data);
     }
 
     public function simpan()

@@ -36,19 +36,36 @@
     <div class="col-sm-12 col-xl-10">
         <div class="bg-secondary rounded h-100 p-4">
             <h6 class="mb-4">Tambah Nilai</h6>
-            <form action="/nilai/simpan" method="post">
+            <form action="/nilai/update/<?= $nilai['nis']; ?>" method="post">
                 <?= csrf_field(); ?>
+                <input type="hidden" name="nis" value="<?= $nilai['nis']; ?>">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nis" placeholder="nis" name="nis" autofocus>
-                    <label for="floatingInput">NIS</label>
+                    <input type="text" class="form-control" id="kode_mapel" placeholder="Kode mapel" name="kode_mapel" value="<?= $nilai['kode_mapel']; ?>" autofocus>
+                    <label for="floatingInput">Kode mapel</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nilai" placeholder="nilai" name="nilai" autofocus>
-                    <label for="floatingInput">Nilai</label>
+                    <input type="text" class="form-control" id="kode_ruang" placeholder="Kode ruang" name="kode_ruang" value="<?= $nilai['kode_ruang']; ?>" autofocus>
+                    <label for="floatingInput">Kode ruang</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="rata_rata" placeholder="Rata-rata" name="rata_rata">
-                    <label for="floatingInput">Rata-rata</label>
+                    <input type="text" class="form-control" id="tugas_1" placeholder="Tugas 1" name="tugas_1" value="<?= $nilai['tugas_1']; ?>" autofocus>
+                    <label for="floatingInput">Tugas 1</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="tugas_2" placeholder="Tugas 2" name="tugas_2" value="<?= $nilai['tugas_2']; ?>" autofocus>
+                    <label for="floatingInput">Tugas 2</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="tugas_3" placeholder="Tugas 3" name="tugas_3" value="<?= $nilai['tugas_3']; ?>" autofocus>
+                    <label for="floatingInput">Tugas 3</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="uts" placeholder="UTS" name="uts" value="<?= $nilai['uts']; ?>" autofocus>
+                    <label for="floatingInput">UTS</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="uas" placeholder="UAS" name="uas" value="<?= $nilai['uas']; ?>" autofocus>
+                    <label for="floatingInput">UAS</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
