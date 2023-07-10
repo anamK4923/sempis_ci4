@@ -20,7 +20,7 @@ class DataPresensi extends BaseController
             'title' => 'Data Presensi',
             'presensi' => $this->dataPresensiModel->getPresensi()
         ];
-        if (in_groups('guru')) {
+        if (in_groups('Guru')) {
             $data['role'] = 'Guru';
             return view('guru/dataPresensi/index', $data);
         }
@@ -31,10 +31,10 @@ class DataPresensi extends BaseController
     {
         $data = [
             'title' => 'Tambah Presensi',
-            'role' => 'guru',
+            'role' => 'Guru',
             'validation' => \Config\Services::validation()
         ];
-        if (in_groups('guru')) {
+        if (in_groups('Guru')) {
             $data['role'] = 'Guru';
             return view('guru/dataPresensi/tambah', $data);
         }

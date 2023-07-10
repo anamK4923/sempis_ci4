@@ -21,7 +21,7 @@ class DataNilai extends BaseController
             'nilai' => $this->dataNilaiModel->getNilai()
         ];
 
-        if (in_groups('guru')) {
+        if (in_groups('Guru')) {
             $data['role'] = 'Guru';
             return view('guru/dataNilai/index', $data);
         }
