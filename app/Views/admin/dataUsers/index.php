@@ -52,7 +52,7 @@
                         <th scope="col">E-Mail</th>
                         <th scope="col">Username</th>
                         <th scope="col">Dibuat Tanggal</th>
-                        <th scope="col">Role</th>
+                        <th scope="col">Authority</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>

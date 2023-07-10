@@ -70,6 +70,7 @@
                 </div>
                 <div class="form-floating mb-3">
                     <select class="form-select" id="kode_ruang" aria-label="Floating label select example" name="kode_ruang">
+                        <option value="">----- PILIH -----</option>
                         <?php foreach ($kelas as $k) : ?>
                             <option value="<?= $k['kode_ruang']; ?>"><?= $k['nama_ruang']; ?></option>
                         <?php endforeach; ?>

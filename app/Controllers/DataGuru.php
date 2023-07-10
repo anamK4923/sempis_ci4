@@ -46,6 +46,7 @@ class DataGuru extends BaseController
             'tgl_lahir'     => $this->request->getVar('tgl_lahir'),
             'jns_kelamin'   => $this->request->getVar('jenis_kelamin'),
             'alamat'        => $this->request->getVar('alamat'),
+            'no_hp'   => $this->request->getVar('no_hp'),
             'email'   => $this->request->getVar('email'),
             'jabatan'   => $this->request->getVar('jabatan'),
             'lulusan'   => $this->request->getVar('lulusan')
