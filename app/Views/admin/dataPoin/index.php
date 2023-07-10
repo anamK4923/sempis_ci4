@@ -33,6 +33,7 @@
 
 <?= $this->section('content'); ?>
 <!-- jika suka naruto kudu nonton ini naruto shippuden opening all reaction 01 - 16 (Blind Reaction) -->
+<!-- TAI -->
 <div class="container-fluid pt-4 px-4">
     <div class="col-12">
         <div class="bg-secondary rounded h-100 p-4">
