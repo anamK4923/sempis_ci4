@@ -8,7 +8,7 @@ class DataPoinModel extends Model
 {
     protected $table = 'poin';
     // protected $useTimestamps = true;
-    protected $allowedFields = ['nis', 'jml_poin'];
+    protected $allowedFields = ['nis', 'nama_siswa', 'jml_poin'];
 
     public function getPoin($nis = false)
     {

@@ -50,4 +50,10 @@ class DataJadwal extends BaseController
 
         return redirect()->to('/jadwal');
     }
+    public function hapus($id)
+    {
+        $this->dataJadwalModel->where('id', $id)->delete();
+
+        return redirect()->to('/jadwal');
+    }
 }

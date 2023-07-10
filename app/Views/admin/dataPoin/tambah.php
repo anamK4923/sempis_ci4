@@ -1,4 +1,3 @@
-
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('sidebar'); ?>
@@ -39,7 +38,7 @@
             <h6 class="mb-4">Tambah Poin</h6>
 
             <form action="/poin/update" method="post">
-            <div class="form-floating mb-3">
+                <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="nis" placeholder="Masukkan NIS" name="nis" value="<?= $poin['nis']; ?>">
                     <label for="floatingInput">NIS</label>
                 </div>
@@ -47,10 +46,9 @@
                     <input type="text" class="form-control<?= ($validation->hasError('poin')) ? 'is-invalid' : ''; ?>" id="poin" placeholder="Masukkan Poin" name="poin" value="<?= $poin['jml_poin']; ?>">
                     <label for="floatingInput">Poin</label>
                 </div>
-                <div class="button d-flex justify-content-between">
+                < class="button d-flex justify-content-between">
                     <button type="submit" class="btn btn-primary">Tambah</button>
                     <a class="btn btn-danger" href="/poin">Cancel</a>
-                </div>
             </form>
         </div>
     </div>

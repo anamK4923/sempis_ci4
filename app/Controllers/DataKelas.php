@@ -63,10 +63,9 @@ class DataKelas extends BaseController
 
     return redirect()->to('/kelas');
   }
-
-  public function hapus()
+  public function hapus($kode_ruang)
   {
-    $this->dataKelasModel->delete($id = 'kode_ruang');
+    $this->dataKelasModel->where('kode_ruang', $kode_ruang)->delete();
 
     return redirect()->to('/kelas');
   }

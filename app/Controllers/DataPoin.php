@@ -28,27 +28,29 @@ class DataPoin extends BaseController
             # code...
         }
     }
-    
+
     public function plus()
     {
         $nis = $this->request->getPost('nis');
+        // dd($nis);
         $poinValues = $this->request->getPost('poin');
         $poinValues1 = $this->request->getPost('poin1');
         foreach ($nis as $index => $n) {
             $a = $poinValues[$index];
             $b = $poinValues1[$index];
-            $c = $a+$b;
+            $c = $a + $b;
             $data = [
                 'jml_poin' => $c
             ];
-    
+            // dd($data);
+
             $ubah = $this->dataPoinModel->updatePoin($data, $n);
-    
+
             if (!$ubah) {
                 // Handle update failure if necessary
             }
         }
-    
+
         session()->setFlashdata('info', 'Updated Category');
         return redirect()->to('/poin');
     }
@@ -61,20 +63,19 @@ class DataPoin extends BaseController
         foreach ($nis as $index => $n) {
             $a = $poinValues[$index];
             $b = $poinValues1[$index];
-            $c = $a-$b;
+            $c = $a - $b;
             $data = [
                 'jml_poin' => $c
             ];
-    
+
             $ubah = $this->dataPoinModel->updatePoin($data, $n);
-    
+
             if (!$ubah) {
                 // Handle update failure if necessary
             }
         }
-    
+
         session()->setFlashdata('info', 'Updated Category');
         return redirect()->to('/poin');
     }
-    
 }
