@@ -42,7 +42,9 @@
           <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
           <!-- <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search"> -->
           <!-- </form> -->
-          <h5><a class="btn btn-sm btn-info mt-1" href="/kelas/tambah">Tambah</a></h5>
+          <?php if (in_groups('Admin TU')) { ?>
+            <h5><a class="btn btn-sm btn-info mt-1" href="/kelas/tambah">Tambah</a></h5>
+          <?php }; ?>
         </div>
       </div>
       <table class="table table-bordered table-hover">
@@ -51,7 +53,9 @@
             <th scope="col">Kode Ruang</th>
             <th scope="col">Nama Ruang</th>
             <th scope="col">Jenis Ruang</th>
-            <th scope="col">Action</th>
+            <?php if (in_groups('Admin TU')) { ?>
+              <th scope="col">Action</th>
+            <?php }; ?>
             </th>
           </tr>
         </thead>
@@ -61,9 +65,11 @@
               <th scope="row"><?= $k['kode_ruang']; ?></th>
               <td><?= $k['nama_ruang']; ?></td>
               <td><?= $k['jenis_ruang']; ?></td>
-              <td>
-                <a class="btn btn-sm btn-success" href="/kelas/edit/<?= $k['kode_ruang']; ?>">Edit</a>
-              </td>
+              <?php if (in_groups('Admin TU')) { ?>
+                <td>
+                  <a class="btn btn-sm btn-success" href="/kelas/edit/<?= $k['kode_ruang']; ?>">Edit</a>
+                </td>
+              <?php }; ?>
             </tr>
           <?php endforeach; ?>
         </tbody>

@@ -30,6 +30,9 @@ class DataUsers extends BaseController
         if (in_groups('Admin TU')) {
             $data['role'] = 'Admin TU';
             return view('admin/dataUsers/index', $data);
+        } elseif (in_groups('Kepala Sekolah')) {
+            $data['role'] = 'Kepala Sekolah';
+            return view('admin/dataUsers/index', $data);
         }
     }
 

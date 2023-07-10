@@ -38,11 +38,13 @@
             <div class="headerTable mb-2">
                 <h5>Tabel Data Jadwal</h5>
                 <div class="headerHelp d-flex align-items-center flex-row gap-2">
-                    <form class="d-none d-md-flex ms-4">
-                        <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-                        <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-                    </form>
-                    <h5><a class="btn btn-sm btn-info mt-1" href="/jadwal/tambah">Tambah</a></h5>
+                    <!-- <form class="d-none d-md-flex ms-4"> -->
+                    <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
+                    <!-- <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
+                    </form> -->
+                    <?php if (in_groups('Admin TU')) { ?>
+                        <h5><a class="btn btn-sm btn-info mt-1" href="/jadwal/tambah">Tambah</a></h5>
+                    <?php }; ?>
                 </div>
             </div>
             <table class="table table-bordered table-hover">
@@ -54,7 +56,9 @@
                         <th scope="col">Kelas</th>
                         <th scope="col">Mata Pelajaran</th>
                         <th scope="col">Guru</th>
-                        <th scope="col">Action</th>
+                        <?php if (in_groups('Admin TU')) { ?>
+                            <th scope="col">Action</th>
+                        <?php }; ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,10 +70,12 @@
                             <td><?= $j['nama_ruang']; ?></td>
                             <td><?= $j['nama_mapel']; ?></td>
                             <td><?= $j['nama_guru']; ?></td>
-                            <td>
-                                <a class="btn btn-sm btn-success" href="/jadwal/edit/<?= $j['id']; ?>">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="/jadwal/hapus/<?= $j['id']; ?>">Hapus</a>
-                            </td>
+                            <?php if (in_groups('Admin TU')) { ?>
+                                <td>
+                                    <a class="btn btn-sm btn-success" href="/jadwal/edit/<?= $j['id']; ?>">Edit</a>
+                                    <a class="btn btn-sm btn-primary" href="/jadwal/hapus/<?= $j['id']; ?>">Hapus</a>
+                                </td>
+                            <?php }; ?>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

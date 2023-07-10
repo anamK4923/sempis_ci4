@@ -52,7 +52,9 @@
                     <tr>
                         <th scope="col">NIS</th>
                         <th scope="col">Poin</th>
-                        <th scope="col">Action</th>
+                        <?php if (in_groups('Admin TU')) { ?>
+                            <th scope="col">Action</th>
+                        <?php }; ?>
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
@@ -61,14 +63,15 @@
                         <tr>
                             <th scope="row"><?= $p['nama_siswa']; ?></th>
                             <td><?= $p['jml_poin']; ?></td>
-                            <td>
-                                <form id="poinForm" action="/poin/min/<?= $p['nis']; ?>" method="POST">
-                                    <input type="hidden" name="nis" value="<?= $p['nis']; ?>">
-                                    <input type="hidden" name="poin" value="<?= $p['jml_poin']; ?>">
-                                    <input type="number" name="poin1" value="0">
-                                    <button type="submit" class="btn btn-sm btn-success">-</button>
-                                </form>
-                                <!-- <script>
+                            <?php if (in_groups('Admin TU')) { ?>
+                                <td>
+                                    <form id="poinForm" action="/poin/min/<?= $p['nis']; ?>" method="POST">
+                                        <input type="hidden" name="nis" value="<?= $p['nis']; ?>">
+                                        <input type="hidden" name="poin" value="<?= $p['jml_poin']; ?>">
+                                        <input type="number" name="poin1" value="0">
+                                        <button type="submit" class="btn btn-sm btn-success">-</button>
+                                    </form>
+                                    <!-- <script>
                                     function increment() {
                                         var form = document.getElementById('poinForm');
                                         form.action = '/poin/plus';
@@ -81,7 +84,8 @@
                                         form.submit();
                                     }
                                 </script> -->
-                            </td>
+                                </td>
+                            <?php }; ?>
                             <td>
                                 <?php if ($p['jml_poin'] < 30) { ?>
                                     <h1 class="badge badge-danger text-danger">Panggil BK</h1>

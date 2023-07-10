@@ -42,7 +42,9 @@
                     <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
                     <!-- <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
                     </form> -->
-                    <h5><a class="btn btn-sm btn-info mt-1" href="/guru/tambah">Tambah</a></h5>
+                    <?php if (in_groups('Admin TU')) { ?>
+                        <h5><a class="btn btn-sm btn-info mt-1" href="/guru/tambah">Tambah</a></h5>
+                    <?php }; ?>
                 </div>
             </div>
             <table class="table table-bordered table-hover">
@@ -57,7 +59,9 @@
                         <th scope="col">Email</th>
                         <th scope="col">Jabatan</th>
                         <th scope="col">Lulusan</th>
-                        <th scope="col">Action</th>
+                        <?php if (in_groups('Admin TU')) { ?>
+                            <th scope="col">Action</th>
+                        <?php }; ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,10 +76,12 @@
                             <td><?= $g['email']; ?></td>
                             <td><?= $g['jabatan']; ?></td>
                             <td><?= $g['lulusan']; ?></td>
-                            <td>
-                                <a class="btn btn-sm btn-success" href="/guru/edit/<?= $g['nip']; ?>">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="/guru/hapus/<?= $g['nip']; ?>">Hapus</a>
-                            </td>
+                            <?php if (in_groups('Admin TU')) { ?>
+                                <td>
+                                    <a class="btn btn-sm btn-success" href="/guru/edit/<?= $g['nip']; ?>">Edit</a>
+                                    <a class="btn btn-sm btn-primary" href="/guru/hapus/<?= $g['nip']; ?>">Hapus</a>
+                                </td>
+                            <?php }; ?>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

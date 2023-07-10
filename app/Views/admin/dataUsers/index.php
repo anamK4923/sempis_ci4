@@ -42,7 +42,9 @@
                     <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
                     <!-- <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
                     </form> -->
-                    <h5><a class="btn btn-sm btn-info mt-1" href="/users/register">Tambah</a></h5>
+                    <?php if (in_groups('Admin TU')) { ?>
+                        <h5><a class="btn btn-sm btn-info mt-1" href="/users/register">Tambah</a></h5>
+                    <?php }; ?>
                 </div>
             </div>
             <table class="table table-bordered table-hover">
@@ -53,7 +55,9 @@
                         <th scope="col">Username</th>
                         <th scope="col">Dibuat Tanggal</th>
                         <th scope="col">Authority</th>
-                        <th scope="col">Action</th>
+                        <?php if (in_groups('Admin TU')) { ?>
+                            <th scope="col">Action</th>
+                        <?php }; ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,9 +70,11 @@
                             <td><?= $s['username']; ?></td>
                             <td><?= $s['created_at']; ?></td>
                             <td><?= $s['name']; ?></td>
-                            <td>
-                                <a class="btn btn-sm btn-primary" href="/users/hapus/<?= $s['id']; ?>">Hapus</a>
-                            </td>
+                            <?php if (in_groups('Admin TU')) { ?>
+                                <td>
+                                    <a class="btn btn-sm btn-primary" href="/users/hapus/<?= $s['id']; ?>">Hapus</a>
+                                </td>
+                            <?php }; ?>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

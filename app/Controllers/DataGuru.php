@@ -23,7 +23,8 @@ class DataGuru extends BaseController
             $data['role'] = 'Admin TU';
             return view('admin/dataGuru/index', $data);
         } elseif (in_groups('Kepala Sekolah')) {
-            # code...
+            $data['role'] = 'Kepala Sekolah';
+            return view('admin/dataGuru/index', $data);
         }
     }
 

@@ -25,7 +25,8 @@ class DataPoin extends BaseController
             $data['role'] = 'Admin TU';
             return view('admin/dataPoin/index', $data);
         } elseif (in_groups('Kepala Sekolah')) {
-            # code...
+            $data['role'] = 'Kepala Sekolah';
+            return view('admin/dataPoin/index', $data);
         }
     }
 

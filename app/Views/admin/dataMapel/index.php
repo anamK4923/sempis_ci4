@@ -36,13 +36,15 @@
     <div class="col-12">
         <div class="bg-secondary rounded h-100 p-4">
             <div class="headerTable mb-2">
-                <h5>Tabel Data Siswa</h5>
+                <h5>Tabel Data Mata Pelajaran</h5>
                 <div class="headerHelp d-flex align-items-center flex-row gap-2">
                     <!-- <form class="d-none d-md-flex ms-4"> -->
                     <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
                     <!-- <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
                     </form> -->
-                    <h5><a class="btn btn-sm btn-info mt-1" href="/mapel/tambah">Tambah</a></h5>
+                    <?php if (in_groups('Admin TU')) { ?>
+                        <h5><a class="btn btn-sm btn-info mt-1" href="/mapel/tambah">Tambah</a></h5>
+                    <?php }; ?>
                 </div>
             </div>
             <table class="table table-bordered table-hover">
@@ -50,7 +52,9 @@
                     <tr>
                         <th scope="col">Kode Mapel</th>
                         <th scope="col">Nama Mapel</th>
-                        <th scope="col">Action</th>
+                        <?php if (in_groups('Admin TU')) { ?>
+                            <th scope="col">Action</th>
+                        <?php }; ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,10 +62,11 @@
                         <tr>
                             <th scope="row"><?= $m['kode_mapel']; ?></th>
                             <td><?= $m['nama_mapel']; ?></td>
-
-                            <td>
-                                <a class="btn btn-sm btn-success" href="/mapel/edit/<?= $m['kode_mapel']; ?>">Edit</a>
-                            </td>
+                            <?php if (in_groups('Admin TU')) { ?>
+                                <td>
+                                    <a class="btn btn-sm btn-success" href="/mapel/edit/<?= $m['kode_mapel']; ?>">Edit</a>
+                                </td>
+                            <?php }; ?>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
