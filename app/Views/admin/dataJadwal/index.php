@@ -67,7 +67,7 @@
                             <td><?= $j['nama_mapel']; ?></td>
                             <td><?= $j['nama_guru']; ?></td>
                             <td>
-                                <a class="btn btn-sm btn-success" href="">Edit</a>
+                                <a class="btn btn-sm btn-success" href="/jadwal/edit/<?= $j['id']; ?>">Edit</a>
                                 <a class="btn btn-sm btn-primary" href="/jadwal/hapus/<?= $j['id']; ?>">Hapus</a>
                             </td>
                         </tr>

@@ -19,4 +19,10 @@ class DataJadwalModel extends Model
 
         return $this->where(['id' => $id])->first();
     }
+
+    public function updateJadwal($data, $id)
+    {
+        # code...
+        return $this->db->table($this->table)->update($data, ['id' => $id]);
+    }
 }

@@ -1,7 +1,7 @@
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('sidebar'); ?>
-<a href="/" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+<a href="/" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
 <!-- <div class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -11,8 +11,8 @@
                         </div>
                     </div> -->
 <a href="/guru" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Guru</a>
-<a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
-<a href="/jadwal" class="nav-item nav-link active"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
+<a href="/siswa" class="nav-item nav-link active"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
+<a href="/jadwal" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/poin" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
 <a href="/mapel" class="nav-item nav-link"><i class="fa-solid fa-book-open me-2"></i>Data Mapel</a>
 <a href="/kelas" class="nav-item nav-link"><i class="fa-solid fa-landmark me-2"></i>Data Kelas</a>
@@ -32,14 +32,16 @@
 <?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
-<div class="container-fluid pt-4 px-4 d-flex justify-content-center">
-    <div class="col-sm-12 col-xl-10">
+<div class="container-fluid pt-2 px-4 d-flex justify-content-center">
+    <div class="col-sm-12 col-xl-9">
         <div class="bg-secondary rounded h-100 p-4">
-            <h6 class="mb-4">Tambah Jadwal</h6>
-            <form action="/jadwal/simpan" method="post">
+            <h6 class="mb-4">Edit Data Jadwal</h6>
+
+            <form action="/jadwal/update/<?= $jadwal['id']; ?>" method="post">
                 <?= csrf_field(); ?>
+                <input type="hidden" name="id" value="<?= $jadwal['id']; ?>">
                 <div class="form-floating mb-3">
-                    <select class="form-select" id="hari" aria-label="Floating label select example" name="hari" autofocus>
+                    <select class="form-select" id="hari" aria-label="Floating label select example" name="hari">
                         <option value="">----- PILIH -----</option>
                         <option value="Senin">Senin</option>
                         <option value="Selasa">Selasa</option>
@@ -52,11 +54,11 @@
                     <label for="floatingSelect">Hari</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="time" class="form-control" id="jam_mulai" placeholder="Jam Dimulai" name="jam_mulai">
+                    <input type="time" class="form-control" id="jam_mulai" placeholder="Jam Dimulai" name="jam_mulai" value="<?= $jadwal['jam_mulai']; ?>">
                     <label for="floatingInput">Jam Dimulai</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="time" class="form-control" id="jam_selesai" placeholder="Jam Selesai" name="jam_selesai">
+                    <input type="time" class="form-control" id="jam_selesai" placeholder="Jam Selesai" name="jam_selesai" value="<?= $jadwal['jam_selesai']; ?>">
                     <label for="floatingInput">Jam Selesai</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -86,7 +88,10 @@
                     </select>
                     <label for="floatingSelect">Nama Guru</label>
                 </div>
-                <button type="submit" class="btn btn-primary">Tambah</button>
+                <div class="button d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <a class="btn btn-danger" href="/siswa">Cancel</a>
+                </div>
             </form>
         </div>
     </div>
