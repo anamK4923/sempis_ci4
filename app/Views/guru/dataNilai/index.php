@@ -37,13 +37,6 @@
         <div class="bg-secondary rounded h-100 p-4">
             <div class="headerTable mb-2">
                 <h5>Tabel Data Nilai</h5>
-                <div class="headerHelp d-flex align-items-center flex-row gap-2">
-                    <form class="d-none d-md-flex ms-4">
-                        <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-                        <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-                    </form>
-                    <h5><a class="btn btn-sm btn-info mt-1" href="">Tambah</a></h5>
-                </div>
             </div>
             <table class="table table-bordered table-hover">
                 <thead>
@@ -73,8 +66,7 @@
                             <td><?= $n['uas']; ?></td>
                             <td><?= $n['rata_rata']; ?></td>
                             <td>
-                                <a class="btn btn-sm btn-success" href="/nilai/edit">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="">Hapus</a>
+                                <a class="btn btn-sm btn-success" href="/nilai/edit/<?= $n['nis']; ?>">Edit</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

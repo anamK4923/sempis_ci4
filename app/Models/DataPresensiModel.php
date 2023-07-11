@@ -7,9 +7,9 @@ use CodeIgniter\Model;
 class DataPresensiModel extends Model
 {
     protected $table = 'data_presensi';
-    protected $primarykey = 'nis';
+    protected $primarykey = 'id';
     // protected $useTimestamps = true;
-    protected $allowedFields = ['tanggal', 'nis', 'keterangan'];
+    protected $allowedFields = ['id', 'nis', 'hadir', 'ijin', 'sakit', 'alpha', 'total_pertemuan', 'persentase'];
 
     public function getPresensi($nis = false)
     {
@@ -18,5 +18,11 @@ class DataPresensiModel extends Model
         }
 
         return $this->where(['nis' => $nis])->first();
+    }
+
+    public function updatePresensi($data, $nis)
+    {
+        # code...
+        return $this->db->table($this->table)->update($data, ['nis' => $nis]);
     }
 }

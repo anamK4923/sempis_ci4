@@ -56,6 +56,7 @@ $routes->match(['get', 'post'], '/presensi/(:any)', 'DataPresensi::$1');
 
 $routes->get('/siswa/edit/(:any)', 'DataSiswa::edit/$1');
 $routes->get('/nilai/edit/(:any)', 'DataNilai::edit/$1');
+$routes->get('/presensi/update/(:any)', 'DataPresensi::update/$1');
 $routes->get('/poin/plus/(:any)', 'DataPoin::plus/$1');
 
 //Routes Edit Data

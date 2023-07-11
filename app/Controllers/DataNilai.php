@@ -3,23 +3,28 @@
 namespace App\Controllers;
 
 use App\Models\DataNilaiModel;
+use App\Models\DataMapelModel;
 use Config\Services;
 use PSpell\Config;
 
 class DataNilai extends BaseController
 {
     protected $dataNilaiModel;
+    protected $dataMapelModel;
     public function __construct()
     {
         $this->dataNilaiModel = new DataNilaiModel();
+        $this->dataMapelModel = new DataMapelModel();
     }
 
     public function index()
     {
         $data = [
             'title' => 'Data Nilai',
-            'nilai' => $this->dataNilaiModel->getNilai()
+            'nilai' => $this->dataNilaiModel->getNilai(),
+            'mapel' => $this->dataMapelModel->getMapel()
         ];
+
 
         if (in_groups('Guru')) {
             $data['role'] = 'Guru';
@@ -30,9 +35,10 @@ class DataNilai extends BaseController
     public function edit($nis)
     {
         $data = [
-            'title' => 'Tambah Nilai',
+            'title' => 'Input Nilai',
             'role' => 'Guru',
             'nilai' => $this->dataNilaiModel->getNilai($nis),
+            'mapel' => $this->dataMapelModel->getMapel(),
             'validation' => \Config\Services::validation()
         ];
 
@@ -53,20 +59,24 @@ class DataNilai extends BaseController
 
     public function update()
     {
-        if (!$this->validate([
-            'nis'           => 'required|is_unique[data_nilai.nis]',
-            'tugas_1'         => 'required',
-            'tugas_2'         => 'required',
-            'tugas_3'         => 'required',
-            'uts'         => 'required',
-            'uas'         => 'required'
-        ])) {
-            $validation = \Config\Services::validation();
+        $nis = $this->request->getPost('nis');
 
-            // dd($validation);
+        // if (!$this->validate([
+        //     'nis'           => 'required|is_unique[data_nilai.nis]',
+        //     'kode_mapel'           => 'required',
+        //     'kode_ruang'           => 'required',
+        //     'tugas_1'         => 'required',
+        //     'tugas_2'         => 'required',
+        //     'tugas_3'         => 'required',
+        //     'uts'         => 'required',
+        //     'uas'         => 'required'
+        // ])) {
+        //     $validation = \Config\Services::validation();
 
-            return redirect()->to('/nilai/edit')->withInput();
-        }
+        //     // dd($validation);
+
+        //     return redirect()->to('/nilai/edit/' . $nis);
+        // }
 
 
         $a = $this->request->getPost('tugas_1');
@@ -75,8 +85,8 @@ class DataNilai extends BaseController
         $d = $this->request->getPost('uts');
         $e = $this->request->getPost('uas');
         $total = ($a + $b + $c + $d + $e) / 5;
-        $this->dataNilaiModel->save([
-            'nis'           => $this->request->getVar('nis'),
+        $data = array(
+            'nis'           => $nis,
             'kode_mapel'    => $this->request->getVar('kode_mapel'),
             'kode_ruang'    => $this->request->getVar('kode_ruang'),
             'tugas_1'    => $a,
@@ -85,18 +95,14 @@ class DataNilai extends BaseController
             'uts'    => $d,
             'uas'    => $e,
             'rata_rata'     => $total
-        ]);
+        );
+        $ubah = $this->dataNilaiModel->updateNilai($data, $nis);
+        // if ($ubah) {
+        //     session()->setFlashdata('info', 'Updated Category');
+        //     // return redirect()->to(base_url('category'));
+        //     return redirect()->to('/nilai');
+        // }
 
         return redirect()->to('/nilai');
-    }
-
-    public function hapus()
-    {
-        $this->dataNilaiModel->where('id', $id)->delete();
-
-        if (in_groups('guru')) {
-            $data['role'] = 'Guru';
-            return redirect()->to('/nilai');
-        }
     }
 }

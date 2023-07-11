@@ -42,16 +42,8 @@
                     <input type="text" class="form-control" id="nis" placeholder="nis" name="nis" autofocus>
                     <label for="floatingInput">NIS</label>
                 </div>
-                <div class="form-floating mb-3">
-                    <select class="form-select" id="keterangan" aria-label="Floating label select example" name="keterangan">
-                        <option selected value="Hadir">Hadir</option>
-                        <option value="Izin">Izin</option>
-                        <option value="Alpha">Alpha</option>
-                        <option value="Sakit">Sakit</option>
-                    </select>
-                    <label for="floatingSelect">Keterangan</label>
-                </div>
                 <button type="submit" class="btn btn-primary">Save</button>
+                <a class="btn btn-danger" href="/presensi">Cancel</a>
             </form>
         </div>
     </div>

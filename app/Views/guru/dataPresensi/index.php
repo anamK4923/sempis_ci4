@@ -38,32 +38,52 @@
             <div class="headerTable mb-2">
                 <h5>Tabel Data Presensi</h5>
                 <div class="headerHelp d-flex align-items-center flex-row gap-2">
-                    <form class="d-none d-md-flex ms-4">
-                        <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-                        <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-                    </form>
                     <h5><a class="btn btn-sm btn-info mt-1" href="/presensi/tambah">Tambah</a></h5>
                 </div>
             </div>
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Tanggal</th>
                         <th scope="col">NIS</th>
-                        <th scope="col">Keterangan</th>
+                        <th scope="col">Kehadiran</th>
+                        <th scope="col">Hadir</th>
+                        <th scope="col">Ijin</th>
+                        <th scope="col">Sakit</th>
+                        <th scope="col">Alpha</th>
+                        <th scope="col">Total Pertemuan</th>
+                        <th scope="col">Persentase Kehadiran</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($presensi as $p) : ?>
                         <tr>
-                            <th scope="row"><?= $p['tanggal']; ?></th>
-                            <td><?= $p['nis']; ?></td>
-                            <td><?= $p['keterangan']; ?></td>
-                            <td>
-                                <a class="btn btn-sm btn-success" href="">Edit</a>
-                                <a class="btn btn-sm btn-primary" href="">Hapus</a>
-                            </td>
+                            <form action="/presensi/update/<?= $p['nis']; ?>" method="POST">
+                                <th scope="row"><?= $p['nis']; ?></th>
+                                <input type="hidden" name="nis" value="<?= $p['nis']; ?>">
+                                <td>
+                                    <select class="form-select" id="kode_ruang" aria-label="Floating label select example" name="kehadiran">
+                                        <option value="">----- PILIH -----</option>
+                                        <option value="hadir">Hadir</option>
+                                        <option value="sakit">Sakit</option>
+                                        <option value="ijin">Ijin</option>
+                                        <option value="alpha">Alpha</option>
+                                    </select>
+                                </td>
+                                <td><?= $p['hadir']; ?></td>
+                                <input type="hidden" name="hadir" value="<?= $p['hadir']; ?>">
+                                <td><?= $p['ijin']; ?></td>
+                                <input type="hidden" name="ijin" value="<?= $p['ijin']; ?>">
+                                <td><?= $p['sakit']; ?></td>
+                                <input type="hidden" name="sakit" value="<?= $p['sakit']; ?>">
+                                <td><?= $p['alpha']; ?></td>
+                                <input type="hidden" name="alpha" value="<?= $p['alpha']; ?>">
+                                <td><?= $p['total_pertemuan']; ?></td>
+                                <input type="hidden" name="total_pertemuan" value="<?= $p['total_pertemuan']; ?>">
+                                <td><?= $p['persentase']; ?>%</td>
+                                <input type="hidden" name="persentase" value="<?= $p['persentase']; ?>">
+                                <td><button type="submit" class="btn btn-sm btn-success">Submit</button></td>
+                            </form>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

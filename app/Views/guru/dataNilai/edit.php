@@ -39,10 +39,19 @@
             <form action="/nilai/update/<?= $nilai['nis']; ?>" method="post">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="nis" value="<?= $nilai['nis']; ?>">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="kode_mapel" placeholder="Kode mapel" name="kode_mapel" value="<?= $nilai['kode_mapel']; ?>" autofocus>
-                    <label for="floatingInput">Kode mapel</label>
-                </div>
+                <?php if ($nilai['kode_mapel'] == null) { ?>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="kode_mapel" aria-label="Floating label select example" name="kode_mapel">
+                            <option value="">----- PILIH -----</option>
+                            <?php foreach ($mapel as $m) : ?>
+                                <option value="<?= $m['kode_mapel']; ?>"><?= $m['nama_mapel']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <label for="floatingInput">Kode mapel</label>
+                    </div>
+                <?php } else { ?>
+                    <input type="hidden" name="kode_mapel" value="<?= $nilai['kode_mapel']; ?>">
+                <?php } ?>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="kode_ruang" placeholder="Kode ruang" name="kode_ruang" value="<?= $nilai['kode_ruang']; ?>" autofocus>
                     <label for="floatingInput">Kode ruang</label>
@@ -68,6 +77,7 @@
                     <label for="floatingInput">UAS</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
+                <a class="btn btn-danger" href="/nilai">Cancel</a>
             </form>
         </div>
     </div>
