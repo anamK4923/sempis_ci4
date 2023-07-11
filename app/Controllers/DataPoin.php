@@ -8,17 +8,21 @@ use App\Models\DataPoinModel;
 class DataPoin extends BaseController
 {
     protected $dataPoinModel;
+    protected $join;
 
     public function __construct()
     {
         $this->dataPoinModel = new DataPoinModel();
+        $this->join = $this->dataPoinModel->select('poin.*, data_siswa.*')
+            ->join('data_siswa', 'data_siswa.nis = poin.nis')
+            ->findAll();
     }
 
     public function index()
     {
         $data = [
             'title' => 'Data Poin',
-            'poin' => $this->dataPoinModel->getPoin()
+            'poin' => $this->join
         ];
 
         if (in_groups('Admin TU')) {

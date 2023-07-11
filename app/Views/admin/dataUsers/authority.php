@@ -14,9 +14,9 @@
 <a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
 <a href="/jadwal" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/poin" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
+<a href="/kelas" class="nav-item nav-link"><i class="fa-solid fa-landmark me-2"></i>Data Kelas</a>
 <a href="/mapel" class="nav-item nav-link"><i class="fa-solid fa-book-open me-2"></i>Data Mapel</a>
-<a href="/kelas" class="nav-item nav-link active"><i class="fa-solid fa-landmark me-2"></i>Data Kelas</a>
-<a href="/users" class="nav-item nav-link"><i class="fa-solid fa-circle-user me-2"></i>Data Users</a>
+<a href="/users" class="nav-item nav-link active"><i class="fa-solid fa-circle-user me-2"></i>Data Users</a>
 <!-- <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> -->
@@ -32,49 +32,45 @@
 <?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
-<div class="container-fluid pt-4 px-4">
-  <div class="col-12">
-    <div class="bg-secondary rounded h-100 p-4">
-      <div class="headerTable mb-2">
-        <h5>Tabel Data Kelas</h5>
-        <div class="headerHelp d-flex align-items-center flex-row gap-2">
-          <!-- <form class="d-none d-md-flex ms-4"> -->
-          <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-          <!-- <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search"> -->
-          <!-- </form> -->
-          <?php if (in_groups('Admin TU')) { ?>
-            <h5><a class="btn btn-sm btn-info mt-1" href="/kelas/tambah">Tambah</a></h5>
-          <?php }; ?>
+<div class="container-fluid pt-4 px-4 d-flex justify-content-center">
+    <div class="col-sm-12 col-xl-10">
+        <div class="bg-secondary rounded h-100 p-4">
+
+            <h6 class="mb-4">Pilih Authority</h6>
+
+
+            <form action="/users/saveAuthority" method="post">
+
+                <?php csrf_field() ?>
+
+                <input type="hidden" name="id_user" value="<?= $id_user; ?>">
+
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="id_karyawan" aria-label="Floating label select example" name="id_karyawan">
+                        <option value="">----- PILIH -----</option>
+                        <?php foreach ($karyawan as $k) : ?>
+                            <option value="<?= $k['id_karyawan']; ?>"><?= $k['nama_guru']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <label for="floatingSelect">Nama Karyawan</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="id" aria-label="Floating label select example" name="id">
+                        <option value="">----- PILIH -----</option>
+                        <?php foreach ($authority as $a) : ?>
+                            <option value="<?= $a['id']; ?>"><?= $a['name']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <label for="floatingSelect">Authority</label>
+                </div>
+
+                <div class="button d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary btn-block">PILIH</button>
+                </div>
+
+            </form>
         </div>
-      </div>
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Kode Ruang</th>
-            <th scope="col">Nama Ruang</th>
-            <th scope="col">Jenis Ruang</th>
-            <?php if (in_groups('Admin TU')) { ?>
-              <th scope="col">Action</th>
-            <?php }; ?>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($kelas as $k) : ?>
-            <tr>
-              <th scope="row"><?= $k['kode_ruang']; ?></th>
-              <td><?= $k['nama_ruang']; ?></td>
-              <td><?= $k['jenis_ruang']; ?></td>
-              <?php if (in_groups('Admin TU')) { ?>
-                <td>
-                  <a class="btn btn-sm btn-success" href="/kelas/edit/<?= $k['kode_ruang']; ?>">Edit</a>
-                </td>
-              <?php }; ?>
-            </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
     </div>
-  </div>
 </div>
-<?= $this->endSection(); ?>
+<?= $this->endsection(); ?>

@@ -50,7 +50,7 @@
             <div class="bg-secondary rounded d-flex align-items-center justify-content-around p-4">
                 <i class="fa fa-chart-bar fa-3x text-primary"></i>
                 <div class="ms-3">
-                    <p class="mb-2">Jumlah Guru</p>
+                    <p class="mb-2">Jumlah Karyawan</p>
                     <h6 class="mb-0"><?= $guru; ?></h6>
                     </h6>
                 </div>

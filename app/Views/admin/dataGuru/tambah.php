@@ -10,7 +10,7 @@
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div> -->
-<a href="/guru" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Data Guru</a>
+<a href="/guru" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Data Karyawan</a>
 <a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
 <a href="/jadwal" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/poin" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
@@ -38,13 +38,7 @@
             <h6 class="mb-4">Tambah Guru</h6>
 
             <form action="/guru/simpan" method="post">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control <?= ($validation->hasError('nip')) ? 'is-invalid' : ''; ?>" id="nip" placeholder="Isikan NIP" name="nip" value="<?= old('nip'); ?>">
-                    <label for="floatingInput">NIP</label>
-                    <div id="validationServer03Feedback" class="invalid-feedback">
-                        NIP sudah terdaftar
-                    </div>
-                </div>
+
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control<?= ($validation->hasError('nama_guru')) ? 'is-invalid' : ''; ?>" id="nama_guru" placeholder="Isikan Nama" name="nama_guru">
                     <label for="floatingInput">Nama Guru</label>
@@ -73,9 +67,9 @@
                     <label for="floatingInput">Email</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <select class="form-select" id="jabatan" aria-label="Floating label select example" name="jabatan">
-                        <option selected value="Guru Matpel">Guru Matpel</option>
-                        <option value="TU">TU</option>
+                    <select class="form-select" id="status" aria-label="Floating label select example" name="status">
+                        <option selected value="Honorer">Honorer</option>
+                        <option value="PNS">PNS</option>
                     </select>
                     <label for="floatingSelect">Jabatan</label>
                 </div>

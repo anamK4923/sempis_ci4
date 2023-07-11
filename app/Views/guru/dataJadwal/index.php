@@ -38,28 +38,33 @@
             <div class="headerTable mb-2">
                 <h5>Tabel Data Jadwal</h5>
                 <div class="headerHelp d-flex align-items-center flex-row gap-2">
-                    <form class="d-none d-md-flex ms-4">
-                        <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
-                        <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
-                    </form>
-                    </div>
+                    <!-- <form class="d-none d-md-flex ms-4"> -->
+                    <!-- <i class="fa-solid fa-magnifying-glass" style="color: #005eff;"></i> -->
+                    <!-- <input class="form-control bg-dark border-0 mb-1" type="search" placeholder="Search">
+                    </form> -->
+                    <?php if (in_groups('Admin TU')) { ?>
+                        <h5><a class="btn btn-sm btn-info mt-1" href="/jadwal/tambah">Tambah</a></h5>
+                    <?php }; ?>
+                </div>
             </div>
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Hari</th>
-                        <th scope="col">Kode Kelas</th>
-                        <th scope="col">Kode Mapel</th>
-                        <th scope="col">nip</th>
+                        <th scope="col">Jam Dimulai</th>
+                        <th scope="col">Jam Selesai</th>
+                        <th scope="col">Kelas</th>
+                        <th scope="col">Mata Pelajaran</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($jadwal as $j) : ?>
+                    <?php foreach ($jadwalGuru as $j) : ?>
                         <tr>
                             <th scope="row"><?= $j['hari']; ?></th>
-                            <td><?= $j['kode_ruang']; ?></td>
-                            <td><?= $j['kode_mapel']; ?></td>
-                            <td><?= $j['nip']; ?></td>
+                            <td><?= $j['jam_mulai']; ?></td>
+                            <td><?= $j['jam_selesai']; ?></td>
+                            <td><?= $j['nama_ruang']; ?></td>
+                            <td><?= $j['nama_mapel']; ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

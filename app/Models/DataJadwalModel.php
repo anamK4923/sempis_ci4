@@ -9,7 +9,7 @@ class DataJadwalModel extends Model
     protected $table = 'jadwal';
     protected $primarykey = 'id';
     // protected $useTimestamps = true;
-    protected $allowedFields = ['id', 'hari', 'jam_mulai', 'jam_selesai', 'kode_ruang', 'kode_mapel', 'nip'];
+    protected $allowedFields = ['id', 'hari', 'jam_mulai', 'jam_selesai', 'kode_ruang', 'kode_mapel', 'id_karyawan'];
 
     public function getJadwal($id = false)
     {

@@ -42,27 +42,27 @@ class DataGuru extends BaseController
     public function simpan()
     {
         $this->dataGuruModel->save([
-            'nip'           => $this->request->getVar('nip'),
+            'id_karyawan'           => $this->request->getVar('id_karyawan'),
             'nama_guru'    => $this->request->getVar('nama_guru'),
             'tgl_lahir'     => $this->request->getVar('tgl_lahir'),
             'jns_kelamin'   => $this->request->getVar('jenis_kelamin'),
             'alamat'        => $this->request->getVar('alamat'),
             'no_hp'   => $this->request->getVar('no_hp'),
             'email'   => $this->request->getVar('email'),
-            'jabatan'   => $this->request->getVar('jabatan'),
+            'status'   => $this->request->getVar('status'),
             'lulusan'   => $this->request->getVar('lulusan')
         ]);
 
         return redirect()->to('/guru');
     }
 
-    public function hapus($nip)
-    {
-        // dd($nis);
-        $this->dataGuruModel->where('nip', $nip)->delete();
+    // public function hapus($nip)
+    // {
+    //     // dd($nis);
+    //     $this->dataGuruModel->where('nip', $nip)->delete();
 
-        return redirect()->to('/guru');
-    }
+    //     return redirect()->to('/guru');
+    // }
 
     public function edit($nip)
     {

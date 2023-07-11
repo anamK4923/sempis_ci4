@@ -10,7 +10,7 @@
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div> -->
-<a href="/guru" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Guru</a>
+<a href="/guru" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Karyawan</a>
 <a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
 <a href="/jadwal" class="nav-item nav-link active"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/poin" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
@@ -78,10 +78,10 @@
                     <label for="floatingSelect">Mata Pelajaran</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <select class="form-select" id="nip" aria-label="Floating label select example" name="nip">
+                    <select class="form-select" id="id_karyawan" aria-label="Floating label select example" name="id_karyawan">
                         <option value="">----- PILIH -----</option>
                         <?php foreach ($guru as $g) : ?>
-                            <option value="<?= $g['nip']; ?>"><?= $g['nama_guru']; ?></option>
+                            <option value="<?= $g['id_karyawan']; ?>"><?= $g['nama_guru']; ?></option>
                         <?php endforeach; ?>
                     </select>
                     <label for="floatingSelect">Nama Guru</label>

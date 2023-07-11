@@ -10,7 +10,7 @@
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div> -->
-<a href="/guru" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Data Guru</a>
+<a href="/guru" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Data Karyawan</a>
 <a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
 <a href="/jadwal" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/poin" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
@@ -50,14 +50,14 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">NIP</th>
-                        <th scope="col">Nama Guru</th>
+                        <th scope="col">ID Karyawan</th>
+                        <th scope="col">Nama Karyawan</th>
                         <th scope="col">Alamat</th>
                         <th scope="col">Tanggal Lahir</th>
                         <th scope="col">Jenis Kelamin</th>
                         <th scope="col">No HP</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Jabatan</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Lulusan</th>
                         <?php if (in_groups('Admin TU')) { ?>
                             <th scope="col">Action</th>
@@ -67,19 +67,18 @@
                 <tbody>
                     <?php foreach ($guru as $g) : ?>
                         <tr>
-                            <th scope="row"><?= $g['nip']; ?></th>
+                            <th scope="row"><?= $g['id_karyawan']; ?></th>
                             <td><?= $g['nama_guru']; ?></td>
                             <td><?= $g['alamat']; ?></td>
                             <td><?= $g['tgl_lahir']; ?></td>
                             <td><?= $g['jenis_kelamin']; ?></td>
                             <td><?= $g['no_hp']; ?></td>
                             <td><?= $g['email']; ?></td>
-                            <td><?= $g['jabatan']; ?></td>
+                            <td><?= $g['status']; ?></td>
                             <td><?= $g['lulusan']; ?></td>
                             <?php if (in_groups('Admin TU')) { ?>
                                 <td>
-                                    <a class="btn btn-sm btn-success" href="/guru/edit/<?= $g['nip']; ?>">Edit</a>
-                                    <a class="btn btn-sm btn-primary" href="/guru/hapus/<?= $g['nip']; ?>">Hapus</a>
+                                    <a class="btn btn-sm btn-success" href="/guru/edit/<?= $g['id_karyawan']; ?>">Edit</a>
                                 </td>
                             <?php }; ?>
                         </tr>

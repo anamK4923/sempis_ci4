@@ -10,7 +10,7 @@
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div> -->
-<a href="/guru" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Guru</a>
+<a href="/guru" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Karyawan</a>
 <a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
 <a href="/jadwal" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/poin" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
@@ -49,7 +49,7 @@
             </div>
             <table class="table table-bordered table-hover">
                 <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th scope="col">No</th>
                         <th scope="col">E-Mail</th>
                         <th scope="col">Username</th>
@@ -69,12 +69,15 @@
                             <td><?= $s['email']; ?></td>
                             <td><?= $s['username']; ?></td>
                             <td><?= $s['created_at']; ?></td>
-                            <td><?= $s['name']; ?></td>
-                            <?php if (in_groups('Admin TU')) { ?>
-                                <td>
-                                    <a class="btn btn-sm btn-primary" href="/users/hapus/<?= $s['id']; ?>">Hapus</a>
-                                </td>
-                            <?php }; ?>
+                            <td class="d-flex justify-content-between">
+                                <?= $s['name']; ?>
+                                <?php if (in_groups('Admin TU')) { ?>
+                                    <a class="btn btn-sm btn-success" href="/users/authority/<?= $s['id']; ?>">Edit Authority</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" href="/users/hapus/<?= $s['id']; ?>">Hapus</a>
+                            </td>
+                        <?php }; ?>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

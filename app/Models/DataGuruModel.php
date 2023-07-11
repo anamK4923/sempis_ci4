@@ -7,26 +7,26 @@ use CodeIgniter\Model;
 class DataGuruModel extends Model
 {
     protected $table = 'data_guru';
-    protected $primarykey = 'nip';
+    protected $primarykey = 'id_karyawan';
     // protected $useTimestamps = true;
     protected $allowedFields = [
-        'nip', 'nama_guru', 'alamat', 'tgl_lahir', 'jenis_kelamin',
+        'id_karyawan', 'nama_guru', 'alamat', 'tgl_lahir', 'jenis_kelamin',
         'no_hp', 'email', 'jabatan', 'lulusan'
     ];
 
-    public function getGuru($nip = false)
+    public function getGuru($id = false)
     {
-        if ($nip == false) {
+        if ($id == false) {
             return $this->findAll();
         }
 
-        return $this->where(['nip' => $nip])->first();
+        return $this->where(['id_karyawan' => $id])->first();
     }
 
-    public function updateGuru($data, $nip)
+    public function updateGuru($data, $id)
     {
         # code...
-        return $this->db->table($this->table)->update($data, ['nip' => $nip]);
+        return $this->db->table($this->table)->update($data, ['id_karyawan' => $id]);
     }
 
     public function jumlahGuru()

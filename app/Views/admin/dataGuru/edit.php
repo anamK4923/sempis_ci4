@@ -10,7 +10,7 @@
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div> -->
-<a href="/guru" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Data Guru</a>
+<a href="/guru" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Data Karyawan</a>
 <a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
 <a href="/jadwal" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/poin" class="nav-item nav-link"><i class="fa-solid fa-book me-2"></i>Poin</a>
@@ -37,9 +37,9 @@
     <div class="bg-secondary rounded h-100 p-4">
       <h6 class="mb-4">Edit Data Guru</h6>
 
-      <form action="/guru/update/<?= $guru['nip']; ?>" method="post">
+      <form action="/guru/update/<?= $guru['id_karyawan']; ?>" method="post">
         <?= csrf_field(); ?>
-        <input type="hidden" name="nip" value="<?= $guru['nip']; ?>">
+        <input type="hidden" name="id_karyawan" value="<?= $guru['id_karyawan']; ?>">
         <div class="form-floating mb-3">
           <input type="text" class="form-control" id="nama_guru" placeholder="name@example.com" name="nama_guru" value="<?= $guru['nama_guru']; ?>">
           <label for="floatingInput">Nama Guru</label>

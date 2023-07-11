@@ -10,7 +10,7 @@
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div> -->
-<a href="/guru" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Guru</a>
+<a href="/guru" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Data Karyawan</a>
 <a href="/siswa" class="nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Data Siswa</a>
 <a href="/jadwal" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Jadwal</a>
 <a href="/poin" class="nav-item nav-link active"><i class="fa-solid fa-book me-2"></i>Poin</a>
@@ -50,7 +50,7 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">NIS</th>
+                        <th scope="col">Nama Siswa</th>
                         <th scope="col">Poin</th>
                         <?php if (in_groups('Admin TU')) { ?>
                             <th scope="col">Action</th>
