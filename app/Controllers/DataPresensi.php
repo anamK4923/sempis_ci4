@@ -3,15 +3,18 @@
 namespace App\Controllers;
 
 use App\Models\DataPresensiModel;
+use App\Models\DataSiswaModel;
 use Config\Services;
 use PSpell\Config;
 
 class DataPresensi extends BaseController
 {
     protected $dataPresensiModel;
+    protected $dataSiswaModel;
     public function __construct()
     {
         $this->dataPresensiModel = new DataPresensiModel();
+        $this->dataSiswaModel = new DataSiswaModel();
     }
 
     public function index()
@@ -32,6 +35,7 @@ class DataPresensi extends BaseController
         $data = [
             'title' => 'Tambah Presensi',
             'role' => 'Guru',
+            'siswa' => $this->dataSiswaModel->getSiswa(),
             'validation' => \Config\Services::validation()
         ];
         if (in_groups('Guru')) {

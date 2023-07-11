@@ -39,7 +39,12 @@
             <form action="/presensi/simpan" method="post">
                 <?= csrf_field(); ?>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nis" placeholder="nis" name="nis" autofocus>
+                    <select class="form-select" id="nis" aria-label="Floating label select example" name="nis">
+                        <option value="">----- PILIH -----</option>
+                        <?php foreach ($siswa as $s) : ?>
+                            <option value="<?= $s['nis']; ?>"><?= $s['nis']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                     <label for="floatingInput">NIS</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
