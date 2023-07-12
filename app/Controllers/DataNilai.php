@@ -11,17 +11,23 @@ class DataNilai extends BaseController
 {
     protected $dataNilaiModel;
     protected $dataMapelModel;
+    protected $join;
     public function __construct()
     {
         $this->dataNilaiModel = new DataNilaiModel();
         $this->dataMapelModel = new DataMapelModel();
+
+        $this->join = $this->dataNilaiModel->select('data_nilai.*, kelas.nama_ruang')
+            ->join('kelas', 'kelas.kode_ruang = data_nilai.kode_ruang')
+            ->findAll();
+        // dd($this->join);
     }
 
     public function index()
     {
         $data = [
             'title' => 'Data Nilai',
-            'nilai' => $this->dataNilaiModel->getNilai(),
+            'nilai' => $this->join,
             'mapel' => $this->dataMapelModel->getMapel()
         ];
 

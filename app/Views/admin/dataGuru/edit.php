@@ -68,9 +68,9 @@
           <label for="floatingInput">Email</label>
         </div>
         <div class="form-floating mb-3">
-          <select class="form-select" id="jabatan" aria-label="Floating label select example" name="jabatan">
-            <option selected value="TU">TU</option>
-            <option value="Guru Matpel">Guru Matpel</option>
+          <select class="form-select" id="status" aria-label="Floating label select example" name="status">
+            <option selected value="honorer">TU</option>
+            <option value="PNS">PNS</option>
           </select>
           <label for="floatingSelect">Jenis Kelamin</label>
         </div>

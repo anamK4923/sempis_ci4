@@ -50,7 +50,6 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">ID Karyawan</th>
                         <th scope="col">Nama Karyawan</th>
                         <th scope="col">Alamat</th>
                         <th scope="col">Tanggal Lahir</th>
@@ -67,7 +66,6 @@
                 <tbody>
                     <?php foreach ($guru as $g) : ?>
                         <tr>
-                            <th scope="row"><?= $g['id_karyawan']; ?></th>
                             <td><?= $g['nama_guru']; ?></td>
                             <td><?= $g['alamat']; ?></td>
                             <td><?= $g['tgl_lahir']; ?></td>

@@ -92,7 +92,7 @@
                                 <?php } elseif ($p['jml_poin'] == 30) { ?>
                                     <h1 class="badge badge-warning text-warning">Peringatan BK</h1>
                                 <?php } else { ?>
-                                    <h1 class="badge badge-success text-success">Tidak ada Pelanggaran</h1>
+                                    <h1 class="badge badge-success text-success">Aman</h1>
                                 <?php } ?>
                             </td>
                         </tr>

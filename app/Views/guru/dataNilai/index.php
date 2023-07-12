@@ -58,7 +58,7 @@
                         <tr>
                             <th scope="row"><?= $n['nis']; ?></th>
                             <td><?= $n['kode_mapel']; ?></td>
-                            <td><?= $n['kode_ruang']; ?></td>
+                            <td><?= $n['nama_ruang']; ?></td>
                             <td><?= $n['tugas_1']; ?></td>
                             <td><?= $n['tugas_2']; ?></td>
                             <td><?= $n['tugas_3']; ?></td>

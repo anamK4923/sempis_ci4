@@ -79,7 +79,7 @@ class DataGuru extends BaseController
     public function update()
     {
         # code...
-        $nip = $this->request->getPost('nip');
+        $nip = $this->request->getPost('id_karyawan');
 
         $data = array(
             'nama_guru'    => $this->request->getVar('nama_guru'),
@@ -88,7 +88,7 @@ class DataGuru extends BaseController
             'alamat'        => $this->request->getVar('alamat'),
             'no_hp'        => $this->request->getVar('no_hp'),
             'email'   => $this->request->getVar('email'),
-            'jabatan'   => $this->request->getVar('jabatan'),
+            'status'   => $this->request->getVar('status'),
             'lulusan'   => $this->request->getVar('lulusan')
         );
 

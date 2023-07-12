@@ -11,7 +11,7 @@ class DataGuruModel extends Model
     // protected $useTimestamps = true;
     protected $allowedFields = [
         'id_karyawan', 'nama_guru', 'alamat', 'tgl_lahir', 'jenis_kelamin',
-        'no_hp', 'email', 'jabatan', 'lulusan'
+        'no_hp', 'email', 'status', 'lulusan'
     ];
 
     public function getGuru($id = false)
